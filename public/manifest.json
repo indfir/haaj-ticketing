@@ -1,0 +1,26 @@
+{
+  "name": "HAAJ Event Ticketing",
+  "short_name": "HAAJ",
+  "description": "Event ticketing platform for HAAJ (Himpunan Astronomi Amatir Jakarta)",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#B48E5A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["entertainment", "education"],
+  "lang": "id-ID"
+}

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: haaj-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: haaj
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-haaj_production_secret}
+      POSTGRES_DB: haaj_ticketing
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U haaj"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      args:
+        NODE_OPTIONS: "--max-old-space-size=1024"
+    container_name: haaj-app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://haaj:${POSTGRES_PASSWORD:-haaj_production_secret}@postgres:5432/haaj_ticketing?schema=public
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-https://tiket.indfir.com}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      HMAC_SECRET: ${HMAC_SECRET}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      EMAIL_FROM: ${EMAIL_FROM:-noreply@tiket.indfir.com}
+      NODE_OPTIONS: "--max-old-space-size=1024"
+    volumes:
+      - ./public/uploads:/app/public/uploads
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  postgres_data:

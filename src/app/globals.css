@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/*
+ * HAAJ Ticketing — Design Tokens
+ *
+ * Typeface pairing: Instrument Serif (display) + Inter Tight (UI/body)
+ * Mono: IBM Plex Mono (ticket codes, data)
+ *
+ * Elevation: hairline borders + background tone shifts only. Zero shadows.
+ * Spacing scale: 4px base (4/8/12/16/20/24/32/40/48/64/80/96)
+ * Radius: 4–8px consistent, never pill-shaped globally.
+ */
+
+@theme inline {
+  /* ─── Surface & text ─── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ─── Accent (warm amber/copper) ─── */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-muted: var(--accent-muted);
+
+  /* ─── Semantic ─── */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* ─── Fonts ─── */
+  --font-display: var(--font-instrument-serif);
+  --font-sans: var(--font-inter-tight);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+/* ═══════════════════════════════════════════════════
+   LIGHT THEME (default)
+   Warm off-white paper, ink near-black, hairlines ~8%
+   ═══════════════════════════════════════════════════ */
+:root {
+  --background: #fafaf8;
+  --foreground: #1a1a19;
+
+  --muted: #f0efec;
+  --muted-foreground: #6b6966;
+
+  --card: #ffffff;
+  --card-foreground: #1a1a19;
+
+  --border: #e5e4e0;
+  --input: #e5e4e0;
+  --ring: #b48e5a;
+
+  /* Accent: warm copper/amber — passes WCAG AA on #FAFAF8 */
+  --accent: #b48e5a;
+  --accent-foreground: #ffffff;
+  --accent-muted: #f5efe7;
+
+  /* Semantic — muted, desaturated */
+  --success: #4a7c59;
+  --success-foreground: #ffffff;
+  --warning: #a07d3a;
+  --warning-foreground: #ffffff;
+  --destructive: #a0453a;
+  --destructive-foreground: #ffffff;
+  --info: #4a6a8c;
+  --info-foreground: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════
+   DARK THEME
+   Deep neutral charcoal (not pure black, not saturated blue)
+   ═══════════════════════════════════════════════════ */
+.dark {
+  --background: #0f1115;
+  --foreground: #ece9e4;
+
+  --muted: #1a1c22;
+  --muted-foreground: #8a8680;
+
+  --card: #16181e;
+  --card-foreground: #ece9e4;
+
+  --border: #2a2c32;
+  --input: #2a2c32;
+  --ring: #c9a46c;
+
+  --accent: #c9a46c;
+  --accent-foreground: #0f1115;
+  --accent-muted: #1e1c17;
+
+  --success: #5e9a70;
+  --success-foreground: #0f1115;
+  --warning: #c4a24e;
+  --warning-foreground: #0f1115;
+  --destructive: #c45a4e;
+  --destructive-foreground: #0f1115;
+  --info: #6a92b8;
+  --info-foreground: #0f1115;
+}
+
+/* ═══════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════ */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Tabular nums for data columns */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus visible ring — high contrast, consistent */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Selection colour */
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* ═══════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes countdown-tick {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out both;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
+/* Staggered card entrance */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 160ms; }
+.stagger-4 { animation-delay: 240ms; }
+.stagger-5 { animation-delay: 320ms; }
+.stagger-6 { animation-delay: 400ms; }
+
+/* ═══════════════════════════════════════════════════
+   SCROLLBAR (thin, themed)
+   ═══════════════════════════════════════════════════ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   CAPACITY BAR FILL COLORS
+   ═══════════════════════════════════════════════════ */
+.capacity-low { background: var(--success); }
+.capacity-mid { background: var(--warning); }
+.capacity-high { background: var(--destructive); }
+
+/* ═══════════════════════════════════════════════════
+   CARD HOVER (elevation via border, not shadow)
+   ═══════════════════════════════════════════════════ */
+.card-hover {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.card-hover:hover {
+  border-color: var(--accent);
+  background-color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE MENU OVERLAY
+   ═══════════════════════════════════════════════════ */
+.mobile-menu-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.dark .mobile-menu-overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════
+   POPUP ANIMATION
+   ═══════════════════════════════════════════════════ */
+@keyframes popup-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

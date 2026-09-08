@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <radialGradient id="bg5" cx="60%" cy="30%"><stop offset="0%" stop-color="#18183a"/><stop offset="100%" stop-color="#08080f"/></radialGradient>
+    <linearGradient id="m5a" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffcc"/><stop offset="100%" stop-color="#ffffcc" stop-opacity="0"/></linearGradient>
+    <linearGradient id="m5b" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ccddff"/><stop offset="100%" stop-color="#ccddff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="milky" cx="50%" cy="50%"><stop offset="0%" stop-color="#223355" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg5)"/>
+  <ellipse cx="600" cy="300" rx="800" ry="200" fill="url(#milky)" transform="rotate(-20,600,300)"/>
+  <circle cx="180" cy="120" r="1" fill="white" opacity="0.7"/><circle cx="420" cy="80" r="1.4" fill="white" opacity="0.6"/>
+  <circle cx="660" cy="100" r="0.9" fill="white" opacity="0.8"/><circle cx="900" cy="150" r="1.2" fill="white" opacity="0.5"/>
+  <circle cx="1050" cy="80" r="1" fill="white" opacity="0.7"/><circle cx="250" cy="350" r="1.3" fill="white" opacity="0.6"/>
+  <circle cx="850" cy="400" r="1.1" fill="white" opacity="0.8"/>
+  <circle cx="700" cy="200" r="3" fill="#ffffdd" opacity="0.9"/>
+  <line x1="700" y1="200" x2="500" y2="400" stroke="url(#m5a)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="900" y2="450" stroke="url(#m5b)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="400" y2="300" stroke="url(#m5a)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="1000" y2="350" stroke="url(#m5b)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="600" y2="500" stroke="url(#m5a)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="850" y2="500" stroke="url(#m5b)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="300" y2="250" stroke="url(#m5a)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="700" y1="200" x2="1100" y2="300" stroke="url(#m5b)" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M0 620 Q300 580 600 600 Q900 620 1200 590 L1200 675 L0 675Z" fill="#0a100a"/>
+</svg>

@@ -1,0 +1,359 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ═══════════════════════════════════════════════════
+// AUTH — NextAuth / Auth.js adapter models
+// ═══════════════════════════════════════════════════
+
+enum UserRole {
+  SUPERADMIN
+  ORGANIZER
+  CHECKIN_STAFF
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  passwordHash  String?
+  image         String?
+  role          UserRole  @default(ORGANIZER)
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  createdEvents Event[]       @relation("EventCreator")
+  checkIns      CheckIn[]     @relation("CheckInStaff")
+  auditLogs     AuditLog[]    @relation("AuditActor")
+  wishlist      Wishlist[]
+  memberAttendances MemberAttendance[] @relation("MemberAttendanceStaff")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ═══════════════════════════════════════════════════
+// EVENTS
+// ═══════════════════════════════════════════════════
+
+enum EventCategory {
+  OBSERVATION
+  WORKSHOP
+  LECTURE
+  STARGAZING
+  MEETUP
+  OTHER
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+  CANCELLED
+  ARCHIVED
+}
+
+model Event {
+  id                    String       @id @default(cuid())
+  slug                  String       @unique
+  title                 String
+  subtitle              String?
+  description           String?      @db.Text
+  coverImageUrl         String?
+  category              EventCategory @default(OTHER)
+  status                EventStatus   @default(DRAFT)
+
+  startAt               DateTime
+  endAt                 DateTime
+  timezone              String       @default("Asia/Jakarta")
+
+  locationName          String?
+  locationAddress       String?
+  locationMapUrl        String?
+  latitude              Float?
+  longitude             Float?
+
+  isOnline              Boolean      @default(false)
+  onlineUrl             String?
+
+  capacity              Int?
+  allowWaitlist         Boolean      @default(false)
+
+  registrationOpensAt   DateTime?
+  registrationClosesAt  DateTime?
+
+  requiresApproval      Boolean      @default(false)
+  isMembersOnly         Boolean      @default(false)
+  priceIDR              Int          @default(0)
+  paymentInfo           String?      @db.Text
+  paymentLink           String?      @db.Text
+
+  contactPerson         String?
+  contactPhone          String?
+
+  createdById           String
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+
+  createdBy             User         @relation("EventCreator", fields: [createdById], references: [id])
+  formFields            EventFormField[]
+  registrations         Registration[]
+  wishlist              Wishlist[]
+  promoCodes            PromoCode[]
+  memberAttendances     MemberAttendance[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([startAt])
+  @@index([createdById])
+}
+
+// ═══════════════════════════════════════════════════
+// CUSTOM REGISTRATION FORM FIELDS
+// ═══════════════════════════════════════════════════
+
+enum FormFieldType {
+  TEXT
+  TEXTAREA
+  EMAIL
+  PHONE
+  NUMBER
+  SELECT
+  MULTISELECT
+  CHECKBOX
+  DATE
+}
+
+model EventFormField {
+  id          String        @id @default(cuid())
+  eventId     String
+  label       String
+  helpText    String?
+  type        FormFieldType @default(TEXT)
+  options     Json?
+  isRequired  Boolean       @default(false)
+  sortOrder   Int           @default(0)
+
+  event       Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+}
+
+// ═══════════════════════════════════════════════════
+// REGISTRATIONS
+// ═══════════════════════════════════════════════════
+
+enum RegistrationStatus {
+  PENDING
+  PENDING_PAYMENT
+  CONFIRMED
+  WAITLISTED
+  REJECTED
+  CANCELLED
+}
+
+model Registration {
+  id            String              @id @default(cuid())
+  eventId       String
+  ticketCode    String              @unique
+  fullName      String
+  email         String
+  phone         String?
+  instagram     String?
+  isHaajMember  Boolean             @default(false)
+  memberNumber  String?
+  answers       Json?
+  status        RegistrationStatus  @default(PENDING)
+  paymentProof  String?
+  paymentRef    String?
+  paymentMethod String?
+  paidAt        DateTime?
+  notes         String?             @db.Text
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+
+  event         Event               @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  checkIn       CheckIn?
+
+  @@unique([eventId, email])
+  @@index([eventId])
+  @@index([ticketCode])
+  @@index([email])
+  @@index([status])
+}
+
+// ═══════════════════════════════════════════════════
+// WISHLIST
+// ═══════════════════════════════════════════════════
+
+model Wishlist {
+  id        String   @id @default(cuid())
+  userId    String
+  eventId   String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+}
+
+// ═══════════════════════════════════════════════════
+// PROMO CODES
+// ═══════════════════════════════════════════════════
+
+model PromoCode {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  eventId     String?
+  discount    Int      // percentage 0-100
+  maxUses     Int?
+  usedCount   Int      @default(0)
+  expiresAt   DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  event       Event?   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([code])
+}
+
+// ══════════════════════════════════════════════════
+// CHECK-IN
+// ═══════════════════════════════════════════════════
+
+enum CheckInMethod {
+  QR
+  MANUAL
+}
+
+model CheckIn {
+  id              String        @id @default(cuid())
+  registrationId  String        @unique
+  checkedInAt     DateTime      @default(now())
+  checkedInById   String?
+  method          CheckInMethod @default(QR)
+  deviceLabel     String?
+
+  registration    Registration  @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+  checkedInBy     User?         @relation("CheckInStaff", fields: [checkedInById], references: [id])
+
+  @@index([registrationId])
+  @@index([checkedInById])
+}
+
+// ═══════════════════════════════════════════════════
+// AUDIT LOG
+// ═══════════════════════════════════════════════════
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  actor      User?    @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([actorId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+// ═══════════════════════════════════════════════════
+// MEMBERS & PRU ATTENDANCE
+// ═══════════════════════════════════════════════════
+
+model Member {
+  id           String    @id @default(cuid())
+  memberNumber String    @unique // e.g. "20258404001"
+  qrCode       String    @unique // e.g. "A-AV5G7B6" (from hi.events or auto-generated)
+  fullName     String    // e.g. "ADE DEWIJANTI"
+  email        String?
+  phone        String?
+  cluster      String?   // Kelompok / Kelas, e.g. "CASTOR-POLLUX"
+  batch        String?   // Angkatan, e.g. "2025" or "2026"
+  isActive     Boolean   @default(true)
+  notes        String?   @db.Text
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  attendances  MemberAttendance[]
+
+  @@index([memberNumber])
+  @@index([qrCode])
+  @@index([fullName])
+  @@index([cluster])
+  @@index([batch])
+}
+
+model MemberAttendance {
+  id            String        @id @default(cuid())
+  memberId      String
+  eventId       String
+  checkedInAt   DateTime      @default(now())
+  checkedInById String?
+  method        CheckInMethod @default(QR)
+  deviceLabel   String?
+
+  member        Member        @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  event         Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  checkedInBy   User?         @relation("MemberAttendanceStaff", fields: [checkedInById], references: [id])
+
+  @@unique([memberId, eventId])
+  @@index([memberId])
+  @@index([eventId])
+  @@index([checkedInById])
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <radialGradient id="bg11" cx="50%" cy="50%"><stop offset="0%" stop-color="#12102a"/><stop offset="100%" stop-color="#06060f"/></radialGradient>
+    <radialGradient id="mars" cx="40%" cy="35%"><stop offset="0%" stop-color="#e8a070"/><stop offset="40%" stop-color="#cc6640"/><stop offset="100%" stop-color="#884430"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg11)"/>
+  <circle cx="150" cy="100" r="1" fill="white" opacity="0.7"/><circle cx="380" cy="70" r="1.3" fill="white" opacity="0.6"/>
+  <circle cx="850" cy="90" r="1.1" fill="white" opacity="0.8"/><circle cx="1050" cy="180" r="0.9" fill="white" opacity="0.5"/>
+  <circle cx="200" cy="400" r="1.2" fill="white" opacity="0.6"/><circle cx="1000" cy="450" r="1" fill="white" opacity="0.7"/>
+  <circle cx="450" cy="300" r="1.4" fill="white" opacity="0.5"/><circle cx="750" cy="500" r="1.1" fill="white" opacity="0.6"/>
+  <circle cx="600" cy="300" r="90" fill="url(#mars)"/>
+  <path d="M530 280 Q560 270 590 285 Q610 295 630 280 Q650 270 670 282" fill="none" stroke="#a05030" stroke-width="2" opacity="0.4"/>
+  <circle cx="575" cy="310" r="12" fill="#aa5535" opacity="0.3"/>
+  <circle cx="620" cy="275" r="8" fill="#994430" opacity="0.25"/>
+  <circle cx="555" cy="330" r="6" fill="#aa5535" opacity="0.2"/>
+  <path d="M555 260 Q570 250 590 258" fill="none" stroke="#905030" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="640" cy="320" r="15" fill="#995540" opacity="0.2"/>
+  <circle cx="600" cy="300" r="110" fill="none" stroke="#cc6640" stroke-width="0.5" opacity="0.15"/>
+</svg>
