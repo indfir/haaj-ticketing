@@ -119,12 +119,12 @@ export function TicketCard({ ticketCode, status, fullName, email, event, checkIn
       });
       if (res.ok) {
         setCurrentRef(refInput.trim());
-        setSavedMsg("Nomor referensi pembayaran berhasil disimpan!");
+        setSavedMsg("Payment reference number saved successfully!");
       } else {
-        alert("Gagal menyimpan nomor referensi. Silakan coba lagi.");
+        alert("Failed to save reference number. Please try again.");
       }
     } catch {
-      alert("Terjadi kesalahan jaringan.");
+      alert("A network error occurred.");
     } finally {
       setSavingRef(false);
     }
@@ -216,12 +216,12 @@ export function TicketCard({ ticketCode, status, fullName, email, event, checkIn
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
-              <span className="text-sm font-semibold">Pendaftaran Berhasil — Menunggu Pembayaran</span>
+              <span className="text-sm font-semibold">Registration Successful — Awaiting Payment</span>
             </div>
 
             {event.priceIDR ? (
               <div className="p-3 bg-[var(--card)] rounded-lg border border-[var(--border)] flex items-center justify-between">
-                <span className="text-xs text-[var(--muted-foreground)]">Total Tagihan Event:</span>
+                <span className="text-xs text-[var(--muted-foreground)]">Total Event Fee:</span>
                 <span className="text-base font-bold text-[var(--foreground)]" style={{ fontFamily: "var(--font-display)" }}>
                   IDR {event.priceIDR.toLocaleString("id-ID")}
                 </span>
@@ -236,20 +236,20 @@ export function TicketCard({ ticketCode, status, fullName, email, event, checkIn
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 rounded-lg bg-[#ED1C24] hover:bg-[#d0171e] text-white font-bold text-sm transition-all shadow hover:shadow-md active:scale-[0.99]"
                 >
-                  <span>Bayar Sekarang via DOKU</span>
+                  <span>Pay Now via DOKU</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
                 <p className="text-[11px] text-[var(--muted-foreground)]">
-                  Klik tombol di atas untuk membayar secara online melalui DOKU Payment Gateway (Virtual Account Bank, Kartu Kredit, e-Wallet).
+                  Click the button above to pay online via DOKU Payment Gateway (Bank Virtual Account, Credit Card, e-Wallet).
                 </p>
               </div>
             )}
 
             {event.paymentInfo && (
               <div className="p-3 bg-[var(--card)] rounded-lg border border-[var(--border)] text-left text-xs space-y-1">
-                <p className="font-semibold text-[var(--foreground)]">Instruksi Transfer Bank Manual:</p>
+                <p className="font-semibold text-[var(--foreground)]">Manual Bank Transfer Instructions:</p>
                 <p className="whitespace-pre-wrap text-[var(--muted-foreground)]">{event.paymentInfo}</p>
               </div>
             )}
@@ -258,30 +258,30 @@ export function TicketCard({ ticketCode, status, fullName, email, event, checkIn
             <form onSubmit={handleSaveRef} className="pt-3 border-t border-amber-500/20 text-left space-y-2">
               <div className="flex items-center justify-between">
                 <label htmlFor="refInput" className="text-xs font-semibold text-[var(--foreground)]">
-                  Konfirmasi Nomor Invoice / Referensi Pembayaran
+                  Confirm Invoice Number / Payment Reference
                 </label>
                 {currentRef && (
-                  <span className="text-[11px] text-emerald-600 font-medium">✓ Tersimpan</span>
+                  <span className="text-[11px] text-emerald-600 font-medium">✓ Saved</span>
                 )}
               </div>
               <div className="flex gap-2">
                 <input
                   id="refInput"
                   type="text"
-                  placeholder="Masukkan No. Invoice / Referensi DOKU Anda"
+                  placeholder="Enter your Invoice No. / DOKU Reference"
                   value={refInput}
                   onChange={(e) => setRefInput(e.target.value)}
                   className="flex-1 rounded-md border border-[var(--input)] bg-[var(--background)] px-3 py-2 text-xs text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--ring)]"
                 />
                 <Button type="submit" size="sm" disabled={savingRef || !refInput.trim()}>
-                  {savingRef ? "Menyimpan…" : "Simpan"}
+                  {savingRef ? "Saving…" : "Save"}
                 </Button>
               </div>
               {savedMsg && (
                 <p className="text-[11px] text-emerald-600 font-medium">{savedMsg}</p>
               )}
               <p className="text-[11px] text-[var(--muted-foreground)] leading-relaxed">
-                Setelah Anda menyelesaikan pembayaran di DOKU, simpan nomor invoice / referensi transaksi Anda di atas untuk mempermudah panitia memverifikasi tiket Anda.
+                After completing your payment on DOKU, save your invoice number / transaction reference above to help the committee verify your ticket.
               </p>
             </form>
           </div>

@@ -68,21 +68,21 @@ async function main() {
     prisma.event.create({
       data: {
         slug: "gerhana-bulan-sebagian-agustus-2026",
-        title: "Gerhana Bulan Sebagian",
-        subtitle: "Partial Lunar Eclipse — Agustus 2026",
+        title: "Partial Lunar Eclipse",
+        subtitle: "Partial Lunar Eclipse — August 2026",
         description:
-          `Saksikan fenomena gerhana bulan sebagian yang terjadi pada 28 Agustus 2026! Bulan akan memasuki sebagian bayangan umbra Bumi, menciptakan pemandangan dramatis di langit malam Jakarta.
+          `Witness the partial lunar eclipse phenomenon on August 28, 2026! The Moon will enter part of Earth's umbra shadow, creating a dramatic sight in the Jakarta night sky.
 
-Acara ini akan diadakan di area terbuka Pantai Ancol dengan pemandangan langit yang luas dan minim polusi cahaya. Kami menyediakan teleskop refraktor dan reflektor untuk pengamatan detail permukaan Bulan selama fase gerhana.
+This event will be held at the open area of Ancol Beach with a wide sky view and minimal light pollution. We provide refractor and reflector telescopes for detailed observation of the Moon's surface during the eclipse phases.
 
 Agenda:
-• 19:00 WIB — Registrasi & welcome drink
-• 19:30 WIB — Pengantar singkat tentang mekanisme gerhana bulan
-• 20:15 WIB — Pengamatan fase penumbra
-• 21:00 WIB — Puncak gerhana sebagian (pengamatan dengan teleskop)
-• 22:30 WIB — Sesi foto & diskusi
+• 19:00 WIB — Registration & welcome drink
+• 19:30 WIB — Brief introduction to lunar eclipse mechanics
+• 20:15 WIB — Penumbra phase observation
+• 21:00 WIB — Peak of partial eclipse (telescope observation)
+• 22:30 WIB — Photo session & discussion
 
-Peralatan disediakan oleh HAAJ. Peserta disarankan membawa tikar/alas duduk dan jaket.`,
+Equipment provided by HAAJ. Participants are advised to bring a mat/sitting pad and jacket.`,
         coverImageUrl: "/uploads/covers/partial-lunar-eclipse.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.PUBLISHED,
@@ -110,22 +110,22 @@ Peralatan disediakan oleh HAAJ. Peserta disarankan membawa tikar/alas duduk dan 
     prisma.event.create({
       data: {
         slug: "oposisi-saturnus-september-2026",
-        title: "Oposisi Saturnus 2026",
-        subtitle: "Saturnus pada posisi terdekat & tercerahi tahun ini",
+        title: "Saturn Opposition 2026",
+        subtitle: "Saturn at its closest & brightest position this year",
         description:
-          `Saturnus akan berada pada posisi oposisi pada 2 September 2026 — artinya planet ini berada tepat berseberangan dengan Matahari dilihat dari Bumi. Ini adalah waktu terbaik untuk mengamati Saturnus beserta cincin ikoniknya!
+          `Saturn will be at opposition on September 2, 2026 — meaning the planet is directly opposite the Sun as viewed from Earth. This is the best time to observe Saturn along with its iconic rings!
 
-Pengamatan dilakukan di kawasan Puncak, Bogor yang memiliki ketinggian 1.200 mdpl dengan tingkat polusi cahaya yang rendah. HAAJ menyediakan beberapa teleskop berdiameter besar untuk melihat detail cincin Saturnus, Celah Cassini, dan satelit-satelitnya termasuk Titan.
+Observation is held in the Puncak area, Bogor at an altitude of 1,200 masl with low light pollution. HAAJ provides several large-diameter telescopes to view details of Saturn's rings, the Cassini Division, and its moons including Titan.
 
 Agenda:
-• 18:00 WIB — Berkumpul & registrasi di meeting point
-• 18:30 WIB — Presentasi: "Mengenal Saturnus & Sistem Cincinnya"
-• 19:30 WIB — Pengamatan Saturnus (teleskop 8" & 10")
-• 21:00 WIB — Sesi astrophotography afocal (boleh bawa smartphone)
-• 22:00 WIB — Deep-sky tour: Nebula & gugus bintang musim semi
-• 23:00 WIB — Penutupan & foto bersama
+• 18:00 WIB — Gather & register at meeting point
+• 18:30 WIB — Presentation: "Getting to Know Saturn & Its Ring System"
+• 19:30 WIB — Saturn observation (8" & 10" telescopes)
+• 21:00 WIB — Afocal astrophotography session (smartphones welcome)
+• 22:00 WIB — Deep-sky tour: Nebulae & spring star clusters
+• 23:00 WIB — Closing & group photo
 
-Transportasi dari Jakarta tidak disediakan. Disarankan menggunakan kendaraan pribadi.`,
+Transportation from Jakarta is not provided. Private vehicles are recommended.`,
         coverImageUrl: "/uploads/covers/saturn-opposition.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.PUBLISHED,
@@ -143,7 +143,7 @@ Transportasi dari Jakarta tidak disediakan. Disarankan menggunakan kendaraan pri
         registrationClosesAt: new Date("2026-08-31T23:59:59Z"),
         requiresApproval: false,
         priceIDR: 50000,
-        paymentInfo: "Transfer ke BCA 1234567890 a/n HAAJ Indonesia. Sertakan bukti transfer saat registrasi.",
+        paymentInfo: "Transfer to BCA 1234567890 a.n. HAAJ Indonesia. Include proof of transfer during registration.",
         contactPerson: "Dimas Prasetyo",
         contactPhone: "+6282198765432",
         createdById: organizer.id,
@@ -155,21 +155,21 @@ Transportasi dari Jakarta tidak disediakan. Disarankan menggunakan kendaraan pri
       data: {
         slug: "supermoon-september-2026",
         title: "Supermoon September 2026",
-        subtitle: "Bulan Purnama Perigee — tampak 14% lebih besar",
+        subtitle: "Perigee Full Moon — appears 14% larger",
         description:
-          `Bulan purnama pada 28 September 2026 bertepatan dengan posisi perigee (titik terdekat Bulan ke Bumi), menjadikannya supermoon! Bulan akan tampak sekitar 14% lebih besar dan 30% lebih terang dibandingkan bulan purnama biasa.
+          `The full moon on September 28, 2026 coincides with the perigee position (the Moon's closest point to Earth), making it a supermoon! The Moon will appear about 14% larger and 30% brighter than a regular full moon.
 
-Lokasi pengamatan di Planetarium Jakarta, Taman Ismail Marzuki — salah satu pusat astronomi tertua di Indonesia. Acara ini cocok untuk keluarga dan pemula yang ingin mengenal astronomi.
+The observation location is at the Jakarta Planetarium, Taman Ismail Marzuki — one of the oldest astronomy centers in Indonesia. This event is suitable for families and beginners who want to learn about astronomy.
 
 Agenda:
-• 17:00 WIB — Open gate & tur singkat Planetarium
-• 17:30 WIB — Mini lecture: "Apa itu Supermoon?"
-• 18:15 WIB — Menonton pertunjukan planetarium (30 menit)
-• 19:00 WIB — Pengamatan moonrise dari rooftop
-• 19:30 WIB — Observasi detail permukaan Bulan dengan teleskop
-• 20:30 WIB — Sesi tanya jawab & penutupan
+• 17:00 WIB — Open gate & short Planetarium tour
+• 17:30 WIB — Mini lecture: "What is a Supermoon?"
+• 18:15 WIB — Planetarium show (30 minutes)
+• 19:00 WIB — Moonrise observation from the rooftop
+• 19:30 WIB — Detailed Moon surface observation with telescopes
+• 20:30 WIB — Q&A session & closing
 
-Cocok untuk semua usia! Anak-anak di bawah 12 tahun wajib didampingi orang tua.`,
+Suitable for all ages! Children under 12 must be accompanied by a parent.`,
         coverImageUrl: "/uploads/covers/supermoon.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.PUBLISHED,
@@ -187,7 +187,7 @@ Cocok untuk semua usia! Anak-anak di bawah 12 tahun wajib didampingi orang tua.`
         registrationClosesAt: new Date("2026-09-26T23:59:59Z"),
         requiresApproval: false,
         priceIDR: 25000,
-        paymentInfo: "Termasuk tiket masuk Planetarium. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes Planetarium entry ticket. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Anisa Nurul",
         contactPhone: "+6285678901234",
         createdById: admin.id,
@@ -198,23 +198,23 @@ Cocok untuk semua usia! Anak-anak di bawah 12 tahun wajib didampingi orang tua.`
     prisma.event.create({
       data: {
         slug: "hujan-meteor-orionid-oktober-2026",
-        title: "Hujan Meteor Orionid 2026",
-        subtitle: "Puncak hujan meteor sisa komet Halley",
+        title: "Orionid Meteor Shower 2026",
+        subtitle: "Peak of the meteor shower from Comet Halley's debris",
         description:
-          `Hujan meteor Orionid adalah salah satu hujan meteor paling ditunggu setiap tahun, berasal dari sisa debu komet legendaris 1P/Halley. Puncaknya diprediksi pada malam 21-22 Oktober 2026 dengan intensitas hingga 20-25 meteor per jam.
+          `The Orionid meteor shower is one of the most anticipated meteor showers every year, originating from the debris of the legendary Comet 1P/Halley. Its peak is predicted on the night of October 21-22, 2026 with an intensity of up to 20-25 meteors per hour.
 
-Pengamatan dilakukan di kawasan Taman Nasional Gunung Halimun Salak, area yang sangat gelap dan ideal untuk pengamatan meteor. Kami menyediakan camping area, tenda komunal, dan perlengkapan pengamatan.
+Observation is held in the Mount Halimun Salak National Park area, a very dark location ideal for meteor observation. We provide camping areas, communal tents, and observation equipment.
 
 Agenda:
-• 16:00 WIB — Registrasi & setup tenda
-• 17:30 WIB — Makan malam bersama
-• 18:30 WIB — Briefing keselamatan & pengenalan rasi bintang
-• 20:00 WIB — Pengamatan dimulai (bintang jatuh pertama!)
-• 00:00 WIB — Puncak pengamatan — radian Orion di atas horizon
-• 03:00 WIB — Golden hour meteor (radian tertinggi)
-• 05:00 WIB — Sunrise & penutupan
+• 16:00 WIB — Registration & tent setup
+• 17:30 WIB — Group dinner
+• 18:30 WIB — Safety briefing & constellation introduction
+• 20:00 WIB — Observation begins (first shooting stars!)
+• 00:00 WIB — Peak observation — Orion radiant above the horizon
+• 03:00 WIB — Golden hour for meteors (highest radiant point)
+• 05:00 WIB — Sunrise & closing
 
-Termasuk: makan malam, sarapan, tenda komunal, matras. Bawa sleeping bag sendiri.`,
+Includes: dinner, breakfast, communal tent, sleeping mat. Bring your own sleeping bag.`,
         coverImageUrl: "/uploads/covers/orionid-meteor.svg",
         category: EventCategory.STARGAZING,
         status: EventStatus.PUBLISHED,
@@ -232,7 +232,7 @@ Termasuk: makan malam, sarapan, tenda komunal, matras. Bawa sleeping bag sendiri
         registrationClosesAt: new Date("2026-10-18T23:59:59Z"),
         requiresApproval: true,
         priceIDR: 150000,
-        paymentInfo: "Termasuk makan malam, sarapan, tenda komunal, dan matras. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes dinner, breakfast, communal tent, and sleeping mat. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Fajar Ramadhan",
         contactPhone: "+6281345678901",
         createdById: organizer.id,
@@ -243,27 +243,27 @@ Termasuk: makan malam, sarapan, tenda komunal, matras. Bawa sleeping bag sendiri
     prisma.event.create({
       data: {
         slug: "workshop-astrofotografi-november-2026",
-        title: "Workshop Astrofotografi untuk Pemula",
-        subtitle: "Dari smartphone hingga DSLR — tangkap keindahan langit malam",
+        title: "Astrophotography Workshop for Beginners",
+        subtitle: "From smartphone to DSLR — capture the beauty of the night sky",
         description:
-          `Pernah ingin memotret Milky Way, jejak bintang, atau planet dengan kamera sendiri? Workshop ini dirancang khusus untuk pemula yang ingin memulai perjalanan astrofotografi.
+          `Ever wanted to photograph the Milky Way, star trails, or planets with your own camera? This workshop is designed specifically for beginners who want to start their astrophotography journey.
 
-Berlokasi di Science Center PUSPIPTEK Serpong yang memiliki area outdoor luas dan fasilitas indoor untuk sesi teori. Materi mencakup pengaturan kamera untuk astrofotografi, teknik long exposure, stacking, dan post-processing.
+Located at the PUSPIPTEK Science Center in Serpong, which has a spacious outdoor area and indoor facilities for theory sessions. Topics include camera settings for astrophotography, long exposure techniques, stacking, and post-processing.
 
-Materi:
-• Pengenalan astrofotografi: widefield, planetary, deep-sky
-• Setting kamera DSLR/mirrorless untuk langit malam
-• Teknik smartphone astrophotography (modal HP saja!)
-• Komposisi & foreground interest
-• Hands-on: pemotretan langit malam di outdoor area
-• Post-processing dasar dengan software gratis (GIMP/Sequator)
+Topics:
+• Introduction to astrophotography: widefield, planetary, deep-sky
+• DSLR/mirrorless camera settings for the night sky
+• Smartphone astrophotography techniques (just need a phone!)
+• Composition & foreground interest
+• Hands-on: night sky photography in the outdoor area
+• Basic post-processing with free software (GIMP/Sequator)
 
-Peserta wajib membawa:
-- Kamera DSLR/mirrorless ATAU smartphone dengan mode manual/pro
-- Tripod (wajib)
-- Laptop untuk sesi editing (opsional)
+Participants must bring:
+- DSLR/mirrorless camera OR smartphone with manual/pro mode
+- Tripod (mandatory)
+- Laptop for editing session (optional)
 
-Instruktur: Kak Bimo — astrofotografer berpengalaman, kontributor NASA APOD.`,
+Instructor: Bimo — experienced astrophotographer, NASA APOD contributor.`,
         coverImageUrl: "/uploads/covers/astrophotography-workshop.svg",
         category: EventCategory.WORKSHOP,
         status: EventStatus.PUBLISHED,
@@ -281,7 +281,7 @@ Instruktur: Kak Bimo — astrofotografer berpengalaman, kontributor NASA APOD.`,
         registrationClosesAt: new Date("2026-11-05T23:59:59Z"),
         requiresApproval: true,
         priceIDR: 100000,
-        paymentInfo: "Termasuk materi digital, sertifikat, dan snack. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes digital materials, certificate, and snacks. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Kartika Putri",
         contactPhone: "+6287654321098",
         createdById: organizer.id,
@@ -292,24 +292,24 @@ Instruktur: Kak Bimo — astrofotografer berpengalaman, kontributor NASA APOD.`,
     prisma.event.create({
       data: {
         slug: "hujan-meteor-leonid-november-2026",
-        title: "Hujan Meteor Leonid 2026",
-        subtitle: "Meteor cepat dari rasi Leo — hingga 15 meteor/jam",
+        title: "Leonid Meteor Shower 2026",
+        subtitle: "Fast meteors from constellation Leo — up to 15 meteors/hour",
         description:
-          `Hujan meteor Leonid berasal dari sisa debu komet 55P/Tempel-Tuttle dan dikenal karena meteoritnya yang sangat cepat — mencapai 71 km/detik! Puncak Leonid 2026 diprediksi pada malam 17-18 November.
+          `The Leonid meteor shower originates from the debris of Comet 55P/Tempel-Tuttle and is known for its extremely fast meteors — reaching 71 km/second! The Leonid 2026 peak is predicted on the night of November 17-18.
 
-Pengamatan akan dilakukan di Kampung Langit Sukabumi, sebuah destinasi astro-tourism yang terkenal dengan langit gelapnya (Bortle Scale 3-4). Lokasi ini berada di ketinggian 800 mdpl dengan horizon terbuka ke arah timur.
+Observation will be held at Kampung Langit Sukabumi, an astro-tourism destination famous for its dark skies (Bortle Scale 3-4). The location is at an altitude of 800 masl with an open horizon facing east.
 
 Agenda:
-• 17:00 WIB — Registrasi & check-in camp
-• 18:00 WIB — Makan malam khas Sunda
-• 19:00 WIB — Kuliah singkat: "Komet & Hujan Meteor"
-• 20:00 WIB — Stargazing & identifikasi rasi bintang
-• 23:00 WIB — Pengamatan meteor intensif dimulai
-• 02:00 WIB — Puncak Leonid (rasi Leo di atas horizon)
-• 04:30 WIB — Pengamatan planet Saturnus & Mars pagi
-• 05:30 WIB — Sunrise & sarapan
+• 17:00 WIB — Registration & camp check-in
+• 18:00 WIB — Sundanese dinner
+• 19:00 WIB — Short lecture: "Comets & Meteor Showers"
+• 20:00 WIB — Stargazing & constellation identification
+• 23:00 WIB — Intensive meteor observation begins
+• 02:00 WIB — Leonid peak (Leo constellation above horizon)
+• 04:30 WIB — Morning Saturn & Mars planet observation
+• 05:30 WIB — Sunrise & breakfast
 
-Termasuk: camping, makan malam & sarapan, peralatan pengamatan.`,
+Includes: camping, dinner & breakfast, observation equipment.`,
         coverImageUrl: "/uploads/covers/leonid-meteor.svg",
         category: EventCategory.STARGAZING,
         status: EventStatus.PUBLISHED,
@@ -327,7 +327,7 @@ Termasuk: camping, makan malam & sarapan, peralatan pengamatan.`,
         registrationClosesAt: new Date("2026-11-14T23:59:59Z"),
         requiresApproval: true,
         priceIDR: 175000,
-        paymentInfo: "Termasuk camping, makan malam Sunda, sarapan, dan peralatan. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes camping, Sundanese dinner, breakfast, and equipment. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Reza Fahlevi",
         contactPhone: "+6281987654321",
         createdById: admin.id,
@@ -338,25 +338,25 @@ Termasuk: camping, makan malam & sarapan, peralatan pengamatan.`,
     prisma.event.create({
       data: {
         slug: "oposisi-jupiter-desember-2026",
-        title: "Oposisi Jupiter 2026",
-        subtitle: "Raja planet pada titik terdekat — amati Great Red Spot!",
+        title: "Jupiter Opposition 2026",
+        subtitle: "The king of planets at its closest — observe the Great Red Spot!",
         description:
-          `Jupiter akan berada pada posisi oposisi pada 12 Desember 2026 — saat terbaik untuk mengamati planet terbesar di tata surya kita! Pada momen ini, Jupiter tampak paling besar dan paling terang sepanjang tahun.
+          `Jupiter will be at opposition on December 12, 2026 — the best time to observe the largest planet in our solar system! At this moment, Jupiter appears at its biggest and brightest throughout the year.
 
-Dengan teleskop, kita bisa melihat detail atmosfer Jupiter: pita-pita awan, Great Red Spot (Bintik Merah Besar), dan keempat bulan Galilean — Io, Europa, Ganymede, dan Callisto.
+With telescopes, we can see details of Jupiter's atmosphere: cloud bands, the Great Red Spot, and the four Galilean moons — Io, Europa, Ganymede, and Callisto.
 
-Pengamatan diadakan di Kebun Raya Bogor yang menyediakan area terbuka dengan pemandangan langit utara yang baik dan suasana tenang di malam hari.
+The observation is held at the Bogor Botanical Gardens, which provides an open area with a good view of the northern sky and a peaceful atmosphere at night.
 
 Agenda:
-• 18:00 WIB — Open gate & registrasi di Taman Astrid
-• 18:30 WIB — Presentasi: "Jupiter — Si Raja Planet"
-• 19:15 WIB — Jupiter rise! Pengamatan dimulai
-• 20:00 WIB — Rotasi Jupiter: amati perubahan detail atmosfer
-• 21:00 WIB — Sesi astrophotography planetary
-• 22:00 WIB — Bonus: deep-sky objects musim dingin (Orion Nebula, Pleiades)
-• 22:30 WIB — Penutupan
+• 18:00 WIB — Open gate & registration at Taman Astrid
+• 18:30 WIB — Presentation: "Jupiter — The King of Planets"
+• 19:15 WIB — Jupiter rise! Observation begins
+• 20:00 WIB — Jupiter rotation: observe changing atmospheric details
+• 21:00 WIB — Planetary astrophotography session
+• 22:00 WIB — Bonus: winter deep-sky objects (Orion Nebula, Pleiades)
+• 22:30 WIB — Closing
 
-Peralatan: Teleskop 10" Dobsonian, 8" SCT, dan binokular 15x70.`,
+Equipment: 10" Dobsonian telescope, 8" SCT, and 15x70 binoculars.`,
         coverImageUrl: "/uploads/covers/jupiter-observation.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.PUBLISHED,
@@ -374,7 +374,7 @@ Peralatan: Teleskop 10" Dobsonian, 8" SCT, dan binokular 15x70.`,
         registrationClosesAt: new Date("2026-12-10T23:59:59Z"),
         requiresApproval: false,
         priceIDR: 35000,
-        paymentInfo: "Termasuk tiket masuk Kebun Raya Bogor malam hari. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes Bogor Botanical Gardens night entry ticket. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Hendra Wijaya",
         contactPhone: "+6282345678901",
         createdById: admin.id,
@@ -385,27 +385,27 @@ Peralatan: Teleskop 10" Dobsonian, 8" SCT, dan binokular 15x70.`,
     prisma.event.create({
       data: {
         slug: "hujan-meteor-geminid-desember-2026",
-        title: "Hujan Meteor Geminid 2026",
-        subtitle: "Raja hujan meteor — hingga 150 meteor per jam!",
+        title: "Geminid Meteor Shower 2026",
+        subtitle: "The king of meteor showers — up to 150 meteors per hour!",
         description:
-          `Geminid adalah hujan meteor terkuat dan paling konsisten sepanjang tahun! Dengan intensitas hingga 120-150 meteor per jam pada puncaknya (13-14 Desember), Geminid menghasilkan meteor berwarna-warni: putih, kuning, hijau, merah, dan biru.
+          `The Geminid is the strongest and most consistent meteor shower throughout the year! With an intensity of up to 120-150 meteors per hour at its peak (December 13-14), the Geminid produces colorful meteors: white, yellow, green, red, and blue.
 
-Berbeda dari hujan meteor lainnya, Geminid bukan berasal dari komet melainkan dari asteroid 3200 Phaethon — membuatnya unik di antara hujan meteor besar lainnya.
+Unlike other meteor showers, the Geminid does not originate from a comet but from the asteroid 3200 Phaethon — making it unique among major meteor showers.
 
-Acara pengamatan ini diadakan di Pantai Carita, Banten — lokasi pesisir dengan horizon terbuka dan minim polusi cahaya. Pengamatan overnight dengan fasilitas camping di tepi pantai.
+This observation event is held at Carita Beach, Banten — a coastal location with an open horizon and minimal light pollution. Overnight observation with camping facilities on the beach.
 
 Agenda:
-• 15:00 WIB — Registrasi & setup camp di pinggir pantai
+• 15:00 WIB — Registration & camp setup on the beach
 • 17:00 WIB — Sunset watching & briefing
-• 18:00 WIB — BBQ dinner di pantai
-• 19:30 WIB — Pengenalan rasi bintang musim dingin (Orion, Gemini, Taurus)
-• 21:00 WIB — Geminid watching dimulai!
-• 00:00 WIB — Puncak intensitas (rasi Gemini di zenith)
-• 03:00 WIB — Late night session untuk yang kuat begadang
-• 05:30 WIB — Sunrise & sarapan pantai
-• 07:00 WIB — Pack up & pulang
+• 18:00 WIB — BBQ dinner on the beach
+• 19:30 WIB — Introduction to winter constellations (Orion, Gemini, Taurus)
+• 21:00 WIB — Geminid watching begins!
+• 00:00 WIB — Peak intensity (Gemini constellation at zenith)
+• 03:00 WIB — Late night session for the hardy stargazers
+• 05:30 WIB — Sunrise & beach breakfast
+• 07:00 WIB — Pack up & head home
 
-Termasuk: camping, BBQ dinner, sarapan, peralatan observasi.`,
+Includes: camping, BBQ dinner, breakfast, observation equipment.`,
         coverImageUrl: "/uploads/covers/geminid-meteor.svg",
         category: EventCategory.STARGAZING,
         status: EventStatus.PUBLISHED,
@@ -423,7 +423,7 @@ Termasuk: camping, BBQ dinner, sarapan, peralatan observasi.`,
         registrationClosesAt: new Date("2026-12-10T23:59:59Z"),
         requiresApproval: true,
         priceIDR: 200000,
-        paymentInfo: "Termasuk camping, BBQ dinner, sarapan, dan peralatan. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes camping, BBQ dinner, breakfast, and equipment. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Putri Handayani",
         contactPhone: "+6885432109876",
         createdById: organizer.id,
@@ -434,25 +434,25 @@ Termasuk: camping, BBQ dinner, sarapan, peralatan observasi.`,
     prisma.event.create({
       data: {
         slug: "konjungsi-venus-saturnus-januari-2027",
-        title: "Konjungsi Venus & Saturnus",
-        subtitle: "Dua planet berdekatan di langit senja",
+        title: "Venus-Saturn Conjunction",
+        subtitle: "Two planets close together in the twilight sky",
         description:
-          `Pada 22 Januari 2027, Venus dan Saturnus akan tampak sangat berdekatan di langit barat saat senja — sebuah konjungsi yang indah! Kedua planet ini akan terpisah kurang dari 1 derajat, bisa diamati dengan mata telanjang dan lebih detail dengan teleskop.
+          `On January 22, 2027, Venus and Saturn will appear very close together in the western sky at twilight — a beautiful conjunction! Both planets will be less than 1 degree apart, observable with the naked eye and in more detail with a telescope.
 
-Venus sebagai objek paling terang di langit (setelah Matahari dan Bulan) akan menjadi pemandu arah, dan Saturnus dengan cincinnya bisa diamati tepat di sebelahnya. Momen langka yang hanya terjadi beberapa tahun sekali!
+Venus, as the brightest object in the sky (after the Sun and Moon), will serve as a directional guide, and Saturn with its rings can be observed right next to it. A rare moment that only happens once every few years!
 
-Lokasi pengamatan di Ragunan, Jakarta Selatan — area terbuka dengan pemandangan langit barat yang baik untuk mengamati objek senja.
+The observation location is at Ragunan, South Jakarta — an open area with a good view of the western sky for observing twilight objects.
 
 Agenda:
-• 16:30 WIB — Registrasi & setup teleskop
-• 17:00 WIB — Mini lecture: "Mengenal Konjungsi Planet"
+• 16:30 WIB — Registration & telescope setup
+• 17:00 WIB — Mini lecture: "Understanding Planetary Conjunctions"
 • 17:30 WIB — Sunset watching
-• 17:50 WIB — Venus muncul! Pengamatan dimulai
-• 18:10 WIB — Konjungsi Venus-Saturnus melalui teleskop
-• 18:45 WIB — Astrofotografi senja (Venus-Saturnus dengan foreground kota)
-• 19:15 WIB — Penutupan
+• 17:50 WIB — Venus appears! Observation begins
+• 18:10 WIB — Venus-Saturn conjunction through the telescope
+• 18:45 WIB — Twilight astrophotography (Venus-Saturn with city foreground)
+• 19:15 WIB — Closing
 
-Acara singkat dan gratis — cocok untuk sepulang kerja/kuliah!`,
+Short and free event — perfect for after work/classes!`,
         coverImageUrl: "/uploads/covers/venus-saturn-conjunction.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.DRAFT,
@@ -480,23 +480,23 @@ Acara singkat dan gratis — cocok untuk sepulang kerja/kuliah!`,
     prisma.event.create({
       data: {
         slug: "pengamatan-mars-februari-2027",
-        title: "Observasi Mars: Planet Merah di Langit Malam",
-        subtitle: "Mars mendekati oposisi — detail permukaan terlihat!",
+        title: "Mars Observation: The Red Planet in the Night Sky",
+        subtitle: "Mars approaches opposition — surface details visible!",
         description:
-          `Mars akan mendekati posisi oposisi pada awal 2027, dan pada 6 Februari planet merah ini cukup dekat untuk mengamati detail permukaannya: polar ice cap, dataran gelap Syrtis Major, dan formasi awan tipis atmosfer Mars.
+          `Mars will approach opposition in early 2027, and on February 6 the red planet will be close enough to observe its surface details: polar ice cap, the dark plain of Syrtis Major, and thin cloud formations in the Martian atmosphere.
 
-Pengamatan dilakukan di Observatorium Bosscha, Lembang — observatorium profesional tertua di Indonesia yang beroperasi sejak 1923. Peserta akan mendapat kesempatan langka menggunakan teleskop bersejarah Zeiss untuk mengamati Mars.
+The observation is held at Bosscha Observatory, Lembang — the oldest professional observatory in Indonesia, operating since 1923. Participants will get a rare opportunity to use the historic Zeiss refractor telescope to observe Mars.
 
 Agenda:
-• 17:00 WIB — Registrasi di gerbang Observatorium Bosscha
-• 17:30 WIB — Tur observatorium & sejarah astronomi Indonesia
-• 18:30 WIB — Kuliah umum: "Mars — Dari Mitologi Hingga Misi Luar Angkasa"
-• 19:30 WIB — Pengamatan Mars dengan teleskop refraktor Zeiss
-• 20:30 WIB — Rotasi Mars: amati fitur permukaan yang berubah
-• 21:30 WIB — Deep-sky tour: Nebula Orion, Gugus Pleiades, Andromeda
-• 22:00 WIB — Diskusi & penutupan
+• 17:00 WIB — Registration at Bosscha Observatory gate
+• 17:30 WIB — Observatory tour & history of Indonesian astronomy
+• 18:30 WIB — Public lecture: "Mars — From Mythology to Space Missions"
+• 19:30 WIB — Mars observation with the Zeiss refractor telescope
+• 20:30 WIB — Mars rotation: observe changing surface features
+• 21:30 WIB — Deep-sky tour: Orion Nebula, Pleiades Cluster, Andromeda
+• 22:00 WIB — Discussion & closing
 
-Kuota terbatas karena kapasitas observatorium. Perjalanan dari Jakarta sekitar 3 jam via tol Cipularang.`,
+Limited quota due to observatory capacity. Travel from Jakarta takes about 3 hours via the Cipularang toll road.`,
         coverImageUrl: "/uploads/covers/mars-observation.svg",
         category: EventCategory.OBSERVATION,
         status: EventStatus.DRAFT,
@@ -515,7 +515,7 @@ Kuota terbatas karena kapasitas observatorium. Perjalanan dari Jakarta sekitar 3
         requiresApproval: true,
         isMembersOnly: true,
         priceIDR: 75000,
-        paymentInfo: "Termasuk tiket masuk Observatorium Bosscha & donasi perawatan teleskop. Transfer ke BCA 1234567890 a/n HAAJ Indonesia.",
+        paymentInfo: "Includes Bosscha Observatory entry ticket & telescope maintenance donation. Transfer to BCA 1234567890 a.n. HAAJ Indonesia.",
         contactPerson: "Prof. Irfan Hakim",
         contactPhone: "+6281567890123",
         createdById: organizer.id,
@@ -529,32 +529,32 @@ Kuota terbatas karena kapasitas observatorium. Perjalanan dari Jakarta sekitar 3
     data: [
       {
         eventId: workshopEvent.id,
-        label: "Jenis kamera yang dimiliki",
+        label: "Type of camera owned",
         type: "SELECT",
-        options: { values: ["Smartphone saja", "DSLR", "Mirrorless", "Action cam", "Belum punya"] },
+        options: { values: ["Smartphone only", "DSLR", "Mirrorless", "Action cam", "Don't have one yet"] },
         isRequired: true,
         sortOrder: 0,
       },
       {
         eventId: workshopEvent.id,
-        label: "Apakah Anda memiliki tripod?",
+        label: "Do you own a tripod?",
         type: "CHECKBOX",
         isRequired: false,
         sortOrder: 1,
       },
       {
         eventId: workshopEvent.id,
-        label: "Pengalaman astrofotografi sebelumnya",
+        label: "Previous astrophotography experience",
         type: "SELECT",
-        options: { values: ["Belum pernah sama sekali", "Pernah coba tapi belum puas", "Sudah beberapa kali", "Cukup berpengalaman"] },
+        options: { values: ["Never at all", "Tried but not satisfied", "A few times", "Quite experienced"] },
         isRequired: true,
         sortOrder: 2,
       },
       {
         eventId: workshopEvent.id,
-        label: "Apa yang paling ingin Anda pelajari?",
+        label: "What would you most like to learn?",
         type: "TEXTAREA",
-        helpText: "Misalnya: memotret Milky Way, star trails, planet, dll.",
+        helpText: "E.g.: photographing the Milky Way, star trails, planets, etc.",
         isRequired: false,
         sortOrder: 3,
       },
@@ -567,32 +567,32 @@ Kuota terbatas karena kapasitas observatorium. Perjalanan dari Jakarta sekitar 3
     data: [
       {
         eventId: geminidEvent.id,
-        label: "Pengalaman camping",
+        label: "Camping experience",
         type: "SELECT",
-        options: { values: ["Belum pernah", "1-2 kali", "Sering camping"] },
+        options: { values: ["Never", "1-2 times", "Frequent camper"] },
         isRequired: true,
         sortOrder: 0,
       },
       {
         eventId: geminidEvent.id,
-        label: "Alergi makanan",
+        label: "Food allergies",
         type: "TEXT",
-        helpText: "Sebutkan jika ada alergi makanan tertentu untuk menu BBQ.",
+        helpText: "Please mention if you have any food allergies for the BBQ menu.",
         isRequired: false,
         sortOrder: 1,
       },
       {
         eventId: geminidEvent.id,
-        label: "Membawa sleeping bag sendiri?",
+        label: "Bringing your own sleeping bag?",
         type: "CHECKBOX",
         isRequired: false,
         sortOrder: 2,
       },
       {
         eventId: geminidEvent.id,
-        label: "Riwayat kesehatan yang perlu kami ketahui",
+        label: "Health history we should know about",
         type: "TEXTAREA",
-        helpText: "Opsional. Untuk keselamatan selama kegiatan outdoor.",
+        helpText: "Optional. For safety during outdoor activities.",
         isRequired: false,
         sortOrder: 3,
       },
@@ -605,17 +605,17 @@ Kuota terbatas karena kapasitas observatorium. Perjalanan dari Jakarta sekitar 3
     data: [
       {
         eventId: bosschaEvent.id,
-        label: "Nomor keanggotaan HAAJ",
+        label: "HAAJ membership number",
         type: "TEXT",
-        helpText: "Event ini khusus untuk anggota HAAJ.",
+        helpText: "This event is exclusively for HAAJ members.",
         isRequired: true,
         sortOrder: 0,
       },
       {
         eventId: bosschaEvent.id,
-        label: "Transportasi ke Lembang",
+        label: "Transportation to Lembang",
         type: "SELECT",
-        options: { values: ["Kendaraan pribadi", "Ikut carpooling dari Jakarta", "Sudah di Bandung"] },
+        options: { values: ["Private vehicle", "Joining carpool from Jakarta", "Already in Bandung"] },
         isRequired: true,
         sortOrder: 1,
       },

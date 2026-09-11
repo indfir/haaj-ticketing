@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
 
   if (!memberRows.length) {
     return NextResponse.json(
-      { error: { code: "EMPTY_DATA", message: "Tidak ada data anggota valid yang ditemukan. Pastikan format CSV memiliki header dan data." } },
+      { error: { code: "EMPTY_DATA", message: "No valid member data found. Make sure the CSV format has headers and data." } },
       { status: 400 }
     );
   }
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
         while (await prisma.member.findUnique({ where: { qrCode: qr } })) {
           qr = generateMemberQr();
           qrAttempts++;
-          if (qrAttempts > 5) throw new Error("Gagal menggenerate kode QR unik");
+          if (qrAttempts > 5) throw new Error("Failed to generate unique QR code");
         }
 
         await prisma.member.create({
@@ -142,8 +142,8 @@ export async function POST(req: NextRequest) {
     } catch (err) {
       errors.push({
         row: i + 1,
-        name: row.fullName || "Baris " + (i + 1),
-        error: err instanceof Error ? err.message : "Gagal import",
+        name: row.fullName || "Row " + (i + 1),
+        error: err instanceof Error ? err.message : "Import failed",
       });
     }
   }

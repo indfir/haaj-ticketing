@@ -192,15 +192,15 @@ export function RegistrationForm({
       {isPaid && (
         <div className="border border-[var(--border)] rounded-xl p-4 bg-[var(--card)] space-y-2 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-[var(--foreground)]">Biaya Pendaftaran</span>
+            <span className="text-sm font-semibold text-[var(--foreground)]">Registration Fee</span>
             <span className="text-lg font-bold text-[var(--foreground)]" style={{ fontFamily: "var(--font-display)" }}>
               IDR {priceIDR.toLocaleString("id-ID")}
             </span>
           </div>
           <div className="text-xs text-[var(--muted-foreground)] leading-relaxed bg-[var(--muted)]/50 p-2.5 rounded-lg border border-[var(--border)]">
-            <p className="font-medium text-[var(--foreground)] mb-0.5">ℹ️ Pembayaran Dilakukan Setelah Pendaftaran</p>
+            <p className="font-medium text-[var(--foreground)] mb-0.5">ℹ️ Payment is Made After Registration</p>
             <p>
-              Setelah mengisi data di atas dan menekan tombol daftar, Anda akan diarahkan ke halaman tiket untuk melakukan pembayaran via <strong>{paymentLink ? "DOKU Payment Gateway" : "Transfer Bank"}</strong>.
+              After filling in the data above and clicking the register button, you will be directed to the ticket page to make payment via <strong>{paymentLink ? "DOKU Payment Gateway" : "Bank Transfer"}</strong>.
             </p>
           </div>
         </div>
@@ -219,12 +219,12 @@ export function RegistrationForm({
         size="lg"
       >
         {submitting
-          ? "Memproses Pendaftaran…"
+          ? "Processing Registration…"
           : isPaid
-          ? "Daftar & Lanjut ke Pembayaran →"
+          ? "Register & Proceed to Payment →"
           : isFull
           ? "Join Waitlist"
-          : "Daftar Event"}
+          : "Register for Event"}
       </Button>
 
       {requiresApproval && (

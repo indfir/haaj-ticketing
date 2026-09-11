@@ -237,22 +237,22 @@ export default function CreateEventPage() {
                 placeholder="https://pay.doku.com/p-link/p/jRWZIPsrap"
               />
               <p className="text-xs text-[var(--muted-foreground)]">
-                Untuk event berbayar, tempel link pembayaran DOKU (contoh: <code className="text-xs bg-[var(--muted)] px-1 py-0.5 rounded">https://pay.doku.com/p-link/p/...</code>). Pembayaran akan dilakukan peserta melalui link ini setelah registrasi berhasil.
+                For paid events, paste the DOKU payment link (e.g. <code className="text-xs bg-[var(--muted)] px-1 py-0.5 rounded">https://pay.doku.com/p-link/p/...</code>). Participants will make payment through this link after successful registration.
               </p>
             </div>
 
             {/* Manual Payment Info */}
             <div className="md:col-span-2 flex flex-col gap-1.5">
-              <Label htmlFor="paymentInfo">Informasi Transfer Bank / Manual (Alternatif / Opsional)</Label>
+              <Label htmlFor="paymentInfo">Manual Bank Transfer Information (Alternative / Optional)</Label>
               <textarea
                 id="paymentInfo"
                 name="paymentInfo"
                 rows={3}
                 className="h-auto w-full rounded-md border border-[var(--input)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--ring)] focus-visible:outline-offset-[-1px]"
-                placeholder="Contoh: Transfer Bank BCA 123-456-7890 a.n. Himpunan Astronom Amatir Jakarta"
+                placeholder="E.g.: BCA Bank Transfer 123-456-7890 a.n. Amateur Astronomers Association of Jakarta"
               />
               <p className="text-xs text-[var(--muted-foreground)]">
-                Instruksi pembayaran manual / transfer bank jika tidak menggunakan DOKU atau sebagai rekening cadangan.
+                Manual payment / bank transfer instructions if not using DOKU or as a backup account.
               </p>
             </div>
 

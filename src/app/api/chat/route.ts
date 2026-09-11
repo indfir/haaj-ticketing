@@ -13,6 +13,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     messages = body.messages;
     language = body.language === "en" ? "en" : "id";
+    // Default to English for all responses
+    language = "en";
     if (!Array.isArray(messages) || messages.length === 0) {
       return Response.json({ error: "Invalid messages" }, { status: 400 });
     }
@@ -36,12 +38,12 @@ export async function POST(req: NextRequest) {
 
     if (events.length > 0) {
       eventContext =
-        "\n\nEvent yang akan datang:\n" +
+        "\n\nUpcoming events:\n" +
         events
           .map((e) => {
             const date = e.startAt instanceof Date ? e.startAt.toISOString().split("T")[0] : String(e.startAt);
             const loc = e.isOnline ? "Online" : e.locationName || "TBA";
-            const price = e.priceIDR === 0 ? "Gratis" : `Rp ${e.priceIDR.toLocaleString("id-ID")}`;
+            const price = e.priceIDR === 0 ? "Free" : `IDR ${e.priceIDR.toLocaleString("id-ID")}`;
             return `• ${e.title} — ${date} — ${loc} — ${price} (${e.category})`;
           })
           .join("\n");
@@ -51,23 +53,7 @@ export async function POST(req: NextRequest) {
   }
 
   const systemPrompt =
-    language === "id"
-      ? `Kamu adalah asisten virtual HAAJ (Himpunan Astronomi Amatir Jakarta) — komunitas astronomi amatir di Jakarta yang sudah berdiri sejak 1984. Kamu membantu pengunjung website ticketing HAAJ.
-
-Tugas utamamu:
-- Menjawab pertanyaan tentang event/astronomi yang diselenggarakan HAAJ
-- Membantu proses registrasi event
-- Membantu cek tiket & check-in
-- Memberikan informasi umum tentang HAAJ
-
-Panduan:
-- Jawab dalam Bahasa Indonesia, ramah dan ringkas
-- Jika ditanya soal event spesifik, arahkan ke halaman event di website
-- Untuk cek tiket, arahkan ke halaman /ticket/lookup
-- Untuk daftar event, arahkan ke halaman event terkait
-- Jangan mengarang informasi yang tidak kamu ketahui
-- Jika tidak yakin, bilang jujur dan sarankan hubungi tim HAAJ${eventContext}`
-      : `You are HAAJ's virtual assistant (Amateur Astronomers Association of Jakarta) — an amateur astronomy community in Jakarta established since 1984. You help visitors of the HAAJ ticketing website.
+    `You are HAAJ's virtual assistant (Amateur Astronomers Association of Jakarta) — an amateur astronomy community in Jakarta established since 1984. You help visitors of the HAAJ ticketing website.
 
 Your main tasks:
 - Answer questions about astronomy events organized by HAAJ

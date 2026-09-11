@@ -320,12 +320,12 @@ export function EventEditor({ event }: Props) {
                 placeholder="https://pay.doku.com/p-link/p/jRWZIPsrap"
               />
               <p className="text-xs text-[var(--muted-foreground)]">
-                Untuk event berbayar, tempel link pembayaran DOKU (contoh: <code className="text-xs bg-[var(--muted)] px-1 py-0.5 rounded">https://pay.doku.com/p-link/p/...</code>). Pembayaran akan dilakukan peserta melalui link ini setelah registrasi berhasil.
+                For paid events, paste the DOKU payment link (e.g. <code className="text-xs bg-[var(--muted)] px-1 py-0.5 rounded">https://pay.doku.com/p-link/p/...</code>). Participants will make payment through this link after successful registration.
               </p>
             </div>
 
             <div className="md:col-span-2 flex flex-col gap-1.5">
-              <Label htmlFor="paymentInfo">Informasi Transfer Bank / Manual (Alternatif)</Label>
+              <Label htmlFor="paymentInfo">Manual Bank Transfer Information (Alternative)</Label>
               <textarea
                 id="paymentInfo"
                 name="paymentInfo"

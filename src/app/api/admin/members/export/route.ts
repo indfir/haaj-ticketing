@@ -12,7 +12,7 @@ export async function GET() {
     orderBy: { memberNumber: "asc" },
   });
 
-  const headers = ["Nomor Anggota", "Nama Lengkap", "Kode QR", "Kelompok", "Angkatan", "Email", "Telepon", "Status", "Terdaftar Pada"];
+  const headers = ["Member Number", "Full Name", "QR Code", "Cluster", "Batch", "Email", "Phone", "Status", "Registered On"];
   const rows = members.map((m) => [
     `"${m.memberNumber}"`,
     `"${m.fullName.replace(/"/g, '""')}"`,
@@ -21,7 +21,7 @@ export async function GET() {
     `"${m.batch || ""}"`,
     `"${m.email || ""}"`,
     `"${m.phone || ""}"`,
-    m.isActive ? "Aktif" : "Non-aktif",
+    m.isActive ? "Active" : "Inactive",
     m.createdAt.toISOString().slice(0, 10),
   ]);
 
@@ -31,7 +31,7 @@ export async function GET() {
     status: 200,
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="data-anggota-haaj-${new Date().toISOString().slice(0, 10)}.csv"`,
+      "Content-Disposition": `attachment; filename="haaj-member-data-${new Date().toISOString().slice(0, 10)}.csv"`,
     },
   });
 }

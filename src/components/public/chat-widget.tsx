@@ -83,7 +83,7 @@ export function ChatWidget() {
         setMessages((prev) =>
           prev.map((m) =>
             m.id === assistantId
-              ? { ...m, content: "Maaf, terjadi gangguan. Silakan coba lagi.", isStreaming: false }
+              ? { ...m, content: "Sorry, something went wrong. Please try again.", isStreaming: false }
               : m,
           ),
         );
@@ -127,7 +127,7 @@ export function ChatWidget() {
       setMessages((prev) =>
         prev.map((m) =>
           m.id === assistantId
-            ? { ...m, content: "Maaf, tidak dapat terhubung. Silakan coba lagi.", isStreaming: false }
+            ? { ...m, content: "Sorry, unable to connect. Please try again.", isStreaming: false }
             : m,
         ),
       );

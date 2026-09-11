@@ -157,9 +157,9 @@ export default function ScanPage() {
       ]);
       showPopup({
         type: "success",
-        name: "Antrean Offline",
+        name: "Offline Queue",
         ticketCode: trimmed,
-        event: "Akan disinkronkan saat koneksi online",
+        event: "Will be synced when connection is online",
       });
       return;
     }
@@ -180,15 +180,15 @@ export default function ScanPage() {
       if (!res.ok) {
         showPopup({
           type: "error",
-          name: "Gagal Check-in",
+          name: "Check-in Failed",
           ticketCode: trimmed,
-          event: data.error?.message ?? "Terjadi kesalahan saat check-in",
+          event: data.error?.message ?? "An error occurred during check-in",
         });
         return;
       }
 
       const isMember = Boolean(data.isMember || data.member);
-      const memberName = data.member?.fullName || data.registration?.fullName || "Tamu";
+      const memberName = data.member?.fullName || data.registration?.fullName || "Guest";
       const codeDisplay = data.member ? `${data.member.memberNumber} (${data.member.qrCode})` : (data.registration?.ticketCode || trimmed);
       const eventTitle = data.event?.title || data.registration?.event?.title || "Event HAAJ";
       const cluster = data.member?.cluster;
@@ -209,7 +209,7 @@ export default function ScanPage() {
           event: eventTitle,
           isMember,
           cluster,
-          detail: `Sudah presensi sebelumnya ${timeStr ? `pukul ${timeStr} WIB` : ""}`,
+          detail: `Already checked in previously ${timeStr ? `at ${timeStr} WIB` : ""}`,
         });
       } else {
         showPopup({
@@ -219,7 +219,7 @@ export default function ScanPage() {
           event: eventTitle,
           isMember,
           cluster,
-          detail: isMember ? "Presensi Anggota Berhasil Dicatat" : "Tiket Valid — Berhasil Masuk",
+          detail: isMember ? "Member Attendance Recorded Successfully" : "Valid Ticket — Entry Granted",
         });
       }
 
@@ -232,7 +232,7 @@ export default function ScanPage() {
           isMember,
           cluster,
           detail: data.alreadyCheckedIn
-            ? `Sudah presensi ${data.checkIn?.checkedInAt ? new Date(data.checkIn.checkedInAt).toLocaleTimeString("id-ID") : ""}`
+            ? `Already checked in ${data.checkIn?.checkedInAt ? new Date(data.checkIn.checkedInAt).toLocaleTimeString("id-ID") : ""}`
             : undefined,
           timestamp: new Date(),
         },
@@ -241,9 +241,9 @@ export default function ScanPage() {
     } catch {
       showPopup({
         type: "error",
-        name: "Kesalahan Jaringan",
+        name: "Network Error",
         ticketCode: trimmed,
-        event: "Tidak dapat terhubung ke server",
+        event: "Unable to connect to server",
       });
     }
   }, [online, selectedEventId, showPopup]);
@@ -331,7 +331,7 @@ export default function ScanPage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
         </svg>
       ),
-      title: "Presensi Berhasil!",
+      title: "Check-in Successful!",
     },
     already: {
       bg: "bg-amber-600",
@@ -340,7 +340,7 @@ export default function ScanPage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
       ),
-      title: "Sudah Pernah Presensi",
+      title: "Already Checked In",
     },
     error: {
       bg: "bg-rose-600",
@@ -349,7 +349,7 @@ export default function ScanPage() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
         </svg>
       ),
-      title: "Check-in Ditolak",
+      title: "Check-in Rejected",
     },
   };
 
@@ -362,15 +362,15 @@ export default function ScanPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <h1 className="text-xl lg:text-3xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-              Scanner Presensi & Check-in
+              Attendance Scanner & Check-in
             </h1>
             <div className="flex items-center gap-2 mt-1">
               <div className={`h-2 w-2 rounded-full ${online ? "bg-[var(--success)]" : "bg-[var(--warning)]"}`} aria-hidden="true" />
               <span className="text-xs text-[var(--muted-foreground)]">
-                {online ? "Online" : "Offline — scan akan diantrekan"}
+                {online ? "Online" : "Offline — scans will be queued"}
               </span>
               {offlineQueue.length > 0 && (
-                <Badge variant="warning">{offlineQueue.length} antrean pending</Badge>
+                <Badge variant="warning">{offlineQueue.length} pending queue</Badge>
               )}
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function ScanPage() {
           {/* Quick badge */}
           <div className="flex items-center gap-2">
             <Badge variant="default" className="text-xs bg-[var(--muted)]">
-              Support QR Kartu Anggota & Tiket Event
+              Supports Member Card QR & Event Tickets
             </Badge>
           </div>
         </div>
@@ -391,12 +391,12 @@ export default function ScanPage() {
           {/* Sesi / Event Selector */}
           <div className="border border-[var(--border)] rounded-xl p-4 bg-[var(--card)] shadow-xs">
             <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">
-              Sesi Acara / Pertemuan (PRU) Aktif
+              Active Event / Meeting Session (PRU)
             </label>
             {loadingEvents ? (
-              <div className="text-xs text-[var(--muted-foreground)] py-2">Memuat daftar acara...</div>
+              <div className="text-xs text-[var(--muted-foreground)] py-2">Loading events...</div>
             ) : events.length === 0 ? (
-              <div className="text-xs text-amber-500 py-2">Belum ada acara aktif. Silakan buat acara di menu Events.</div>
+              <div className="text-xs text-amber-500 py-2">No active events yet. Please create an event in the Events menu.</div>
             ) : (
               <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
                 <select
@@ -418,7 +418,7 @@ export default function ScanPage() {
               </div>
             )}
             <p className="text-xs text-[var(--muted-foreground)] mt-2">
-              Kartu anggota yang discan akan otomatis dicatat kehadirannya pada sesi di atas.
+              Scanned member cards will automatically have their attendance recorded for the session above.
             </p>
           </div>
 
@@ -437,18 +437,18 @@ export default function ScanPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <p className="text-sm text-white/80 font-medium">Kamera Siap</p>
-                  <p className="text-xs text-white/40 mt-1">Arahkan kamera ke QR Code pada kartu anggota atau tiket</p>
+                  <p className="text-sm text-white/80 font-medium">Camera Ready</p>
+                  <p className="text-xs text-white/40 mt-1">Point the camera at the QR Code on the member card or ticket</p>
                 </div>
               )}
             </div>
 
             {cameraError && (
               <div className="mt-4 p-4 rounded-xl border border-[var(--destructive)]/30 bg-[var(--destructive)]/5">
-                <p className="text-sm text-[var(--destructive)] font-medium">Izin Kamera Diperlukan</p>
+                <p className="text-sm text-[var(--destructive)] font-medium">Camera Permission Required</p>
                 <p className="text-xs text-[var(--destructive)] mt-1">{cameraError}</p>
                 <p className="text-xs text-[var(--muted-foreground)] mt-2">
-                  Pastikan Anda mengakses via HTTPS dan memberikan izin kamera di browser.
+                  Make sure you are accessing via HTTPS and have granted camera permission in the browser.
                 </p>
               </div>
             )}
@@ -462,7 +462,7 @@ export default function ScanPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                Aktifkan Kamera Scanner
+                Activate Scanner Camera
               </Button>
             ) : (
               <Button onClick={stopScanner} variant="outline" className="w-full h-12 text-base font-semibold rounded-xl">
@@ -470,7 +470,7 @@ export default function ScanPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
                 </svg>
-                Hentikan Scanner
+                Stop Scanner
               </Button>
             )}
           </div>
@@ -482,19 +482,19 @@ export default function ScanPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
               <p className="text-xs uppercase tracking-widest text-[var(--muted-foreground)] font-semibold">
-                Input Manual (QR Kartu / Nomor Anggota / Tiket)
+                Manual Entry (Card QR / Member Number / Ticket)
               </p>
             </div>
             <form onSubmit={handleManualSubmit} className="flex gap-3">
               <Input
                 value={manualCode}
                 onChange={(e) => setManualCode(e.target.value)}
-                placeholder="Contoh: A-AV5G7B6, 20258404001, atau HAAJ-XXXX"
+                placeholder="E.g.: A-AV5G7B6, 20258404001, or HAAJ-XXXX"
                 className="font-mono flex-1 rounded-lg"
                 aria-label="Manual ticket or member code entry"
               />
               <Button type="submit" disabled={manualLoading || !manualCode.trim()} className="rounded-lg px-5">
-                {manualLoading ? "Memproses…" : "Presensi"}
+                {manualLoading ? "Processing…" : "Check-in"}
               </Button>
             </form>
           </div>
@@ -503,7 +503,7 @@ export default function ScanPage() {
           <div>
             <div className="flex items-center justify-between mb-3">
               <p className="text-xs uppercase tracking-widest text-[var(--muted-foreground)] font-semibold">
-                Riwayat Presensi Terbaru
+                Recent Check-in History
               </p>
               <Badge variant="muted">{results.length}</Badge>
             </div>
@@ -514,10 +514,10 @@ export default function ScanPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
                   <p className="text-sm text-[var(--muted-foreground)] font-medium">
-                    Belum ada presensi yang discan
+                    No scans recorded yet
                   </p>
                   <p className="text-xs text-[var(--muted-foreground)] mt-1">
-                    Scan kartu anggota atau tiket peserta untuk memulai
+                    Scan a member card or participant ticket to begin
                   </p>
                 </div>
               ) : (
@@ -535,7 +535,7 @@ export default function ScanPage() {
                           <p className="text-sm font-semibold truncate">{r.name}</p>
                           {r.isMember && (
                             <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-[var(--accent)] text-white rounded-md">
-                              Anggota HAAJ
+                              HAAJ Member
                             </span>
                           )}
                           {r.cluster && (
@@ -578,14 +578,14 @@ export default function ScanPage() {
 
             {popup.isMember && (
               <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                Kartu Anggota Terverifikasi
+                Member Card Verified
               </div>
             )}
 
             <p className="text-xl font-bold mb-1 text-white leading-tight">{popup.name}</p>
             {popup.cluster && (
               <p className="text-xs font-semibold text-white/85 mb-1 tracking-wide">
-                Kelompok: {popup.cluster}
+                Cluster: {popup.cluster}
               </p>
             )}
             <p className="text-white/70 text-xs font-mono mb-2">{popup.ticketCode}</p>

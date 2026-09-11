@@ -159,21 +159,21 @@ export default function MembersAdminPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        setFormError(data.error?.message || "Gagal menyimpan data anggota");
+        setFormError(data.error?.message || "Failed to save member data");
         return;
       }
 
       setModalMode(null);
       fetchMembers();
     } catch {
-      setFormError("Terjadi kesalahan jaringan saat menyimpan");
+      setFormError("A network error occurred while saving");
     } finally {
       setFormLoading(false);
     }
   };
 
   const handleDeleteMember = async (m: Member) => {
-    if (!confirm(`Hapus anggota "${m.fullName}" (${m.memberNumber})? Data presensi terkait juga akan terhapus.`)) {
+    if (!confirm(`Delete member "${m.fullName}" (${m.memberNumber})? Related attendance data will also be deleted.`)) {
       return;
     }
 
@@ -182,10 +182,10 @@ export default function MembersAdminPage() {
       if (res.ok) {
         fetchMembers();
       } else {
-        alert("Gagal menghapus anggota");
+        alert("Failed to delete member");
       }
     } catch {
-      alert("Terjadi kesalahan saat menghapus");
+      alert("An error occurred while deleting");
     }
   };
 
@@ -203,14 +203,14 @@ export default function MembersAdminPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        alert(data.error?.message || "Import gagal diproses");
+        alert(data.error?.message || "Import failed to process");
         return;
       }
 
       setImportReport(data);
       fetchMembers();
     } catch {
-      alert("Terjadi kesalahan koneksi saat import");
+      alert("A connection error occurred during import");
     } finally {
       setImportLoading(false);
     }
@@ -224,14 +224,14 @@ export default function MembersAdminPage() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl lg:text-3xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                Database Anggota HAAJ
+                HAAJ Member Database
               </h1>
               <Badge variant="default" className="text-xs bg-[var(--muted)]">
-                {pagination.total} Terdaftar
+                {pagination.total} Registered
               </Badge>
             </div>
             <p className="text-xs text-[var(--muted-foreground)] mt-1">
-              Manajemen kartu anggota, kode QR (hi.events / internal), dan riwayat presensi PRU
+              Manage member cards, QR codes (hi.events / internal), and PRU attendance history
             </p>
           </div>
 
@@ -265,7 +265,7 @@ export default function MembersAdminPage() {
               <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
-              Tambah Anggota
+              Add Member
             </Button>
           </div>
         </div>
@@ -285,14 +285,14 @@ export default function MembersAdminPage() {
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <h2 className="text-base font-bold text-[var(--foreground)] tracking-tight">
-                    Panduan Fitur & Integrasi Kartu Anggota HAAJ
+                    HAAJ Member Card Feature Guide & Integration
                   </h2>
                   <span className="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
-                    Sistem Presensi PRU
+                    PRU Attendance System
                   </span>
                 </div>
                 <p className="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl leading-relaxed">
-                  Informasi cara kerja integrasi QR kartu fisik (hi.events), alur presensi otomatis saat Pertemuan Rutin Umum (PRU), dan pengelolaan data anggota.
+                  Information on how the physical card QR integration (hi.events) works, the automatic attendance flow during General Routine Meetings (PRU), and member data management.
                 </p>
               </div>
             </div>
@@ -300,7 +300,7 @@ export default function MembersAdminPage() {
               onClick={() => setShowGuide(!showGuide)}
               className="text-xs font-semibold text-[var(--accent)] hover:underline flex items-center gap-1 shrink-0 pt-1 cursor-pointer"
             >
-              {showGuide ? "Sembunyikan Panduan" : "Buka Panduan"}
+              {showGuide ? "Hide Guide" : "Open Guide"}
               <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${showGuide ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -318,10 +318,10 @@ export default function MembersAdminPage() {
                     <rect x="3" y="14" width="7" height="7" strokeWidth="2" />
                     <rect x="14" y="14" width="7" height="7" strokeWidth="2" />
                   </svg>
-                  <span>1. QR Kartu Fisik hi.events</span>
+                  <span>1. hi.events Physical Card QR</span>
                 </div>
                 <p className="text-[var(--muted-foreground)] leading-relaxed">
-                  Kartu anggota fisik HAAJ yang sudah terbit (misal format string <code className="font-mono bg-[var(--muted)] px-1 py-0.5 rounded text-[11px] text-[var(--foreground)]">A-AV5G7B6</code> dari hi.events) <strong>langsung kompatibel</strong>. Cukup masukkan kode tersebut di kolom <strong>Kode QR Kartu</strong> anggota.
+                  Issued HAAJ physical member cards (e.g. string format <code className="font-mono bg-[var(--muted)] px-1 py-0.5 rounded text-[11px] text-[var(--foreground)]">A-AV5G7B6</code> from hi.events) are <strong>directly compatible</strong>. Simply enter the code in the member's <strong>Card QR Code</strong> field.
                 </p>
               </div>
 
@@ -331,10 +331,10 @@ export default function MembersAdminPage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>2. Presensi PRU Cukup Sekali Scan</span>
+                  <span>2. PRU Attendance — Just One Scan</span>
                 </div>
                 <p className="text-[var(--muted-foreground)] leading-relaxed">
-                  Anggota <strong>tidak perlu daftar ulang tiap minggu</strong>. Saat PRU dimulai, panitia cukup buka tab <strong>Scanner Presensi</strong>, pilih sesi PRU yang aktif, lalu scan kartu anggota. Kehadiran langsung tercatat otomatis.
+                  Members <strong>do not need to re-register every week</strong>. When PRU begins, the committee just opens the <strong>Attendance Scanner</strong> tab, selects the active PRU session, then scans the member card. Attendance is automatically recorded.
                 </p>
               </div>
 
@@ -345,10 +345,10 @@ export default function MembersAdminPage() {
                     <rect x="2" y="5" width="20" height="14" rx="2" strokeWidth="2" />
                     <line x1="2" y1="10" x2="22" y2="10" strokeWidth="2" />
                   </svg>
-                  <span>3. Anggota Baru & Cetak QR</span>
+                  <span>3. New Members & QR Printing</span>
                 </div>
                 <p className="text-[var(--muted-foreground)] leading-relaxed">
-                  Untuk anggota baru, klik <strong>+ Tambah Anggota</strong> dan gunakan tombol <strong>+ Generate Baru</strong>. Klik tombol kartu 💳 pada tabel untuk melihat mockup kartu HAAJ (depan & belakang) serta mengunduh gambar QR code (PNG).
+                  For new members, click <strong>+ Add Member</strong> and use the <strong>+ Generate New</strong> button. Click the card 💳 button in the table to view the HAAJ card mockup (front & back) and download the QR code image (PNG).
                 </p>
               </div>
 
@@ -361,7 +361,7 @@ export default function MembersAdminPage() {
                   <span>4. Import & Export Data</span>
                 </div>
                 <p className="text-[var(--muted-foreground)] leading-relaxed">
-                  Data anggota yang dikirim pengurus/Sienik bisa langsung di-bulk import lewat tombol <strong>Import CSV</strong> (salin-tempel spreadsheet). Seluruh database anggota juga dapat diekspor kapan saja via <strong>Export CSV</strong>.
+                  Member data from administrators/Sienik can be bulk imported via the <strong>Import CSV</strong> button (copy-paste from spreadsheet). The entire member database can also be exported anytime via <strong>Export CSV</strong>.
                 </p>
               </div>
             </div>
@@ -377,7 +377,7 @@ export default function MembersAdminPage() {
             </svg>
             <input
               type="text"
-              placeholder="Cari nama, no. anggota, QR code..."
+              placeholder="Search name, member no., QR code..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -397,7 +397,7 @@ export default function MembersAdminPage() {
               }}
               className="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
             >
-              <option value="">Semua Kelompok</option>
+              <option value="">All Clusters</option>
               {clusters.map((c) => (
                 <option key={c} value={c}>{c}</option>
               ))}
@@ -412,9 +412,9 @@ export default function MembersAdminPage() {
               }}
               className="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
             >
-              <option value="">Semua Angkatan</option>
+              <option value="">All Batches</option>
               {batches.map((b) => (
-                <option key={b} value={b}>Angkatan {b}</option>
+                <option key={b} value={b}>Batch {b}</option>
               ))}
             </select>
 
@@ -427,9 +427,9 @@ export default function MembersAdminPage() {
               }}
               className="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
             >
-              <option value="">Semua Status</option>
-              <option value="active">Aktif</option>
-              <option value="inactive">Non-aktif</option>
+              <option value="">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
             </select>
           </div>
         </div>
@@ -440,27 +440,27 @@ export default function MembersAdminPage() {
             <table className="w-full text-left text-sm border-collapse">
               <thead>
                 <tr className="border-b border-[var(--border)] bg-[var(--muted)]/50 text-[var(--muted-foreground)] text-xs uppercase tracking-wider font-semibold">
-                  <th className="py-3.5 px-4">Anggota</th>
-                  <th className="py-3.5 px-4">No. Anggota</th>
-                  <th className="py-3.5 px-4">Kode QR Kartu</th>
-                  <th className="py-3.5 px-4">Kelompok</th>
-                  <th className="py-3.5 px-4">Angkatan</th>
-                  <th className="py-3.5 px-4 text-center">Kehadiran PRU</th>
+                  <th className="py-3.5 px-4">Member</th>
+                  <th className="py-3.5 px-4">Member No.</th>
+                  <th className="py-3.5 px-4">Card QR Code</th>
+                  <th className="py-3.5 px-4">Cluster</th>
+                  <th className="py-3.5 px-4">Batch</th>
+                  <th className="py-3.5 px-4 text-center">PRU Attendance</th>
                   <th className="py-3.5 px-4 text-center">Status</th>
-                  <th className="py-3.5 px-4 text-right">Aksi</th>
+                  <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border)]">
                 {loading ? (
                   <tr>
                     <td colSpan={8} className="py-12 text-center text-xs text-[var(--muted-foreground)]">
-                      Memuat data anggota...
+                      Loading member data...
                     </td>
                   </tr>
                 ) : members.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="py-12 text-center text-sm text-[var(--muted-foreground)]">
-                      Tidak ada anggota yang cocok dengan pencarian
+                      No members matching the search
                     </td>
                   </tr>
                 ) : (
@@ -505,12 +505,12 @@ export default function MembersAdminPage() {
                       </td>
 
                       <td className="py-3 px-4 text-xs text-[var(--muted-foreground)]">
-                        {m.batch ? `Angkatan ${m.batch}` : "—"}
+                        {m.batch ? `Batch ${m.batch}` : "—"}
                       </td>
 
                       <td className="py-3 px-4 text-center">
                         <Badge variant="muted" className="text-xs font-mono">
-                          {m._count?.attendances ?? 0} kali
+                          {m._count?.attendances ?? 0} times
                         </Badge>
                       </td>
 
@@ -518,11 +518,11 @@ export default function MembersAdminPage() {
                         {m.isActive ? (
                           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                            Aktif
+                            Active
                           </span>
                         ) : (
                           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-zinc-500/10 text-zinc-500">
-                            Non-aktif
+                            Inactive
                           </span>
                         )}
                       </td>
@@ -553,7 +553,7 @@ export default function MembersAdminPage() {
                           </button>
                           <button
                             onClick={() => handleDeleteMember(m)}
-                            title="Hapus"
+                            title="Delete"
                             className="p-1.5 rounded-lg border border-[var(--border)] hover:bg-rose-500/10 text-[var(--muted-foreground)] hover:text-rose-500 transition-colors"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -573,7 +573,7 @@ export default function MembersAdminPage() {
           {pagination.totalPages > 1 && (
             <div className="py-3 px-4 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--muted-foreground)]">
               <span>
-                Halaman {page} dari {pagination.totalPages}
+                Page {page} of {pagination.totalPages}
               </span>
               <div className="flex gap-2">
                 <Button
@@ -583,7 +583,7 @@ export default function MembersAdminPage() {
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   className="rounded-lg h-8"
                 >
-                  Sebelumnya
+                  Previous
                 </Button>
                 <Button
                   variant="outline"
@@ -592,7 +592,7 @@ export default function MembersAdminPage() {
                   onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))}
                   className="rounded-lg h-8"
                 >
-                  Berikutnya
+                  Next
                 </Button>
               </div>
             </div>
@@ -608,7 +608,7 @@ export default function MembersAdminPage() {
           <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
               <h2 className="text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                {modalMode === "add" ? "Tambah Anggota Baru" : "Edit Data Anggota"}
+                {modalMode === "add" ? "Add New Member" : "Edit Member Data"}
               </h2>
               <button
                 onClick={() => setModalMode(null)}
@@ -627,11 +627,11 @@ export default function MembersAdminPage() {
             <form onSubmit={handleSaveMember} className="space-y-4 text-sm">
               <div>
                 <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)] mb-1">
-                  Nama Lengkap *
+                  Full Name *
                 </label>
                 <Input
                   required
-                  placeholder="Contoh: ADE DEWIJANTI"
+                  placeholder="E.g.: ADE DEWIJANTI"
                   value={form.fullName}
                   onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                   className="rounded-xl"
@@ -641,11 +641,11 @@ export default function MembersAdminPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)] mb-1">
-                    Nomor Anggota *
+                    Member Number *
                   </label>
                   <Input
                     required
-                    placeholder="Contoh: 20258404001"
+                    placeholder="E.g.: 20258404001"
                     value={form.memberNumber}
                     onChange={(e) => setForm({ ...form, memberNumber: e.target.value })}
                     className="font-mono rounded-xl"
@@ -654,10 +654,10 @@ export default function MembersAdminPage() {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)] mb-1">
-                    Kelompok / Kelas
+                    Cluster / Class
                   </label>
                   <Input
-                    placeholder="Contoh: CASTOR-POLLUX"
+                    placeholder="E.g.: CASTOR-POLLUX"
                     value={form.cluster}
                     onChange={(e) => setForm({ ...form, cluster: e.target.value })}
                     className="rounded-xl"
@@ -668,34 +668,34 @@ export default function MembersAdminPage() {
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)]">
-                    Kode QR Kartu (hi.events / Custom)
+                    Card QR Code (hi.events / Custom)
                   </label>
                   <button
                     type="button"
                     onClick={handleGenerateQr}
                     className="text-xs text-[var(--accent)] hover:underline font-semibold"
                   >
-                    + Generate Baru
+                    + Generate New
                   </button>
                 </div>
                 <Input
-                  placeholder="Contoh: A-AV5G7B6 (kosongkan untuk generate otomatis)"
+                  placeholder="E.g.: A-AV5G7B6 (leave empty to auto-generate)"
                   value={form.qrCode}
                   onChange={(e) => setForm({ ...form, qrCode: e.target.value })}
                   className="font-mono rounded-xl"
                 />
                 <p className="text-[11px] text-[var(--muted-foreground)] mt-1">
-                  Jika kartu fisik sudah dicetak (misal dari hi.events), masukkan kode persis seperti di QR.
+                  If the physical card has been printed (e.g. from hi.events), enter the code exactly as shown on the QR.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)] mb-1">
-                    Angkatan
+                    Batch
                   </label>
                   <Input
-                    placeholder="Contoh: 2025"
+                    placeholder="E.g.: 2025"
                     value={form.batch}
                     onChange={(e) => setForm({ ...form, batch: e.target.value })}
                     className="rounded-xl"
@@ -704,10 +704,10 @@ export default function MembersAdminPage() {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-[var(--muted-foreground)] mb-1">
-                    No. Telepon / WhatsApp
+                    Phone / WhatsApp Number
                   </label>
                   <Input
-                    placeholder="Contoh: 081234567890"
+                    placeholder="E.g.: 081234567890"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     className="rounded-xl"
@@ -737,16 +737,16 @@ export default function MembersAdminPage() {
                   className="w-4 h-4 accent-[var(--accent)] rounded"
                 />
                 <label htmlFor="isActiveToggle" className="text-xs font-medium cursor-pointer">
-                  Status Anggota Aktif (Berhak mengikuti PRU dan presensi)
+                  Active Member Status (Eligible to attend PRU and check-in)
                 </label>
               </div>
 
               <div className="flex items-center justify-end gap-2 pt-4 border-t border-[var(--border)]">
                 <Button type="button" variant="outline" onClick={() => setModalMode(null)} className="rounded-xl">
-                  Batal
+                  Cancel
                 </Button>
                 <Button type="submit" disabled={formLoading} className="rounded-xl px-6 font-semibold">
-                  {formLoading ? "Menyimpan…" : "Simpan Data"}
+                  {formLoading ? "Saving…" : "Save Data"}
                 </Button>
               </div>
             </form>
@@ -763,10 +763,10 @@ export default function MembersAdminPage() {
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
               <div>
                 <h2 className="text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                  Import Data Anggota (CSV / Sienik / hi.events)
+                  Import Member Data (CSV / Sienik / hi.events)
                 </h2>
                 <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                  Salin dan tempel data dari file Excel/Spreadsheet atau upload CSV
+                  Copy and paste data from Excel/Spreadsheet files or upload CSV
                 </p>
               </div>
               <button
@@ -778,19 +778,19 @@ export default function MembersAdminPage() {
             </div>
 
             <div className="bg-[var(--muted)]/50 border border-[var(--border)] rounded-xl p-3 text-xs text-[var(--muted-foreground)] space-y-1">
-              <p className="font-semibold text-[var(--foreground)]">Format Header Kolom:</p>
+              <p className="font-semibold text-[var(--foreground)]">Column Header Format:</p>
               <p className="font-mono text-[11px] bg-[var(--background)] px-2 py-1 rounded border border-[var(--border)]">
-                Nama Lengkap, Nomor Anggota, Kode QR, Kelompok, Angkatan, Email, Telepon
+                Full Name, Member Number, QR Code, Cluster, Batch, Email, Phone
               </p>
               <p className="text-[11px]">
-                * Jika kolom <strong>Kode QR</strong> dikosongkan, sistem akan otomatis meng-generate QR unik untuk anggota tersebut.
+                * If the <strong>QR Code</strong> column is left empty, the system will automatically generate a unique QR for that member.
               </p>
             </div>
 
             <div>
               <textarea
                 rows={8}
-                placeholder={`Nama Lengkap,Nomor Anggota,Kode QR,Kelompok,Angkatan,Email\nADE DEWIJANTI,20258404001,A-AV5G7B6,CASTOR-POLLUX,2025,ade@example.com\nREZKY HAAJ,20258404002,A-RZK88P1,BETELGEUSE,2025,rezky@haaj.id`}
+                placeholder={`Full Name,Member Number,QR Code,Cluster,Batch,Email\nADE DEWIJANTI,20258404001,A-AV5G7B6,CASTOR-POLLUX,2025,ade@example.com\nREZKY HAAJ,20258404002,A-RZK88P1,BETELGEUSE,2025,rezky@haaj.id`}
                 value={importText}
                 onChange={(e) => setImportText(e.target.value)}
                 className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl p-3 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
@@ -799,15 +799,15 @@ export default function MembersAdminPage() {
 
             {importReport && (
               <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-xs space-y-1 text-emerald-800 dark:text-emerald-300">
-                <p className="font-bold text-sm">Hasil Import:</p>
-                <p>✓ Berhasil ditambahkan: <strong>{importReport.created}</strong> anggota</p>
-                <p>✓ Berhasil diperbarui: <strong>{importReport.updated}</strong> anggota</p>
+                <p className="font-bold text-sm">Import Result:</p>
+                <p>✓ Successfully added: <strong>{importReport.created}</strong> members</p>
+                <p>✓ Successfully updated: <strong>{importReport.updated}</strong> members</p>
                 {importReport.errors && importReport.errors.length > 0 && (
                   <div className="mt-2 text-rose-600 dark:text-rose-400">
-                    <p className="font-semibold">Ada {importReport.errors.length} baris gagal:</p>
+                    <p className="font-semibold">{importReport.errors.length} rows failed:</p>
                     <ul className="list-disc pl-4 mt-1 space-y-0.5">
                       {importReport.errors.slice(0, 5).map((e, idx) => (
-                        <li key={idx}>Baris {e.row} ({e.name}): {e.error}</li>
+                        <li key={idx}>Row {e.row} ({e.name}): {e.error}</li>
                       ))}
                     </ul>
                   </div>
@@ -817,14 +817,14 @@ export default function MembersAdminPage() {
 
             <div className="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)]">
               <Button variant="outline" onClick={() => setImportOpen(false)} className="rounded-xl">
-                Tutup
+                Close
               </Button>
               <Button
                 onClick={handleImportSubmit}
                 disabled={importLoading || !importText.trim()}
                 className="rounded-xl px-6 font-semibold"
               >
-                {importLoading ? "Memproses Import…" : "Mulai Import"}
+                {importLoading ? "Processing Import…" : "Start Import"}
               </Button>
             </div>
           </div>
@@ -840,7 +840,7 @@ export default function MembersAdminPage() {
             <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
               <div>
                 <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                  Kartu Anggota HAAJ
+                  HAAJ Member Card
                 </h2>
                 <p className="text-xs text-[var(--muted-foreground)]">
                   {previewMember.fullName} • {previewMember.memberNumber}
@@ -865,7 +865,7 @@ export default function MembersAdminPage() {
                       : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
                   }`}
                 >
-                  Sisi Depan
+                  Front Side
                 </button>
                 <button
                   onClick={() => setCardSide("back")}
@@ -875,7 +875,7 @@ export default function MembersAdminPage() {
                       : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
                   }`}
                 >
-                  Sisi Belakang (QR Check-In)
+                  Back Side (QR Check-In)
                 </button>
               </div>
             </div>
@@ -922,7 +922,7 @@ export default function MembersAdminPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-1 text-[10px] text-blue-200">
                         <span>✨</span>
-                        <span>{previewMember.batch ? `Angkatan ${previewMember.batch}` : "Anggota HAAJ"}</span>
+                        <span>{previewMember.batch ? `Batch ${previewMember.batch}` : "HAAJ Member"}</span>
                       </div>
                     </div>
                   </div>
@@ -930,13 +930,13 @@ export default function MembersAdminPage() {
                   {/* Bottom cluster & number */}
                   <div className="ml-12 flex items-end justify-between border-t border-slate-700/60 pt-2">
                     <div>
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider">Kelompok</p>
+                      <p className="text-[9px] text-slate-400 uppercase tracking-wider">Cluster</p>
                       <p className="text-xs font-black tracking-wider text-blue-300 uppercase">
                         {previewMember.cluster || "CASTOR-POLLUX"}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider">No. Anggota</p>
+                      <p className="text-[9px] text-slate-400 uppercase tracking-wider">Member No.</p>
                       <p className="text-xs font-mono font-bold tracking-wider text-white">
                         {previewMember.memberNumber}
                       </p>
@@ -990,7 +990,7 @@ export default function MembersAdminPage() {
               </a>
 
               <Button variant="outline" size="sm" onClick={() => setPreviewMember(null)} className="rounded-xl">
-                Selesai
+                Done
               </Button>
             </div>
           </div>

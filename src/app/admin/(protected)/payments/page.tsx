@@ -30,7 +30,7 @@ export default async function PaymentVerificationPage() {
             Payment Verification
           </h1>
           <p className="text-sm text-[var(--muted-foreground)]">
-            Verifikasi pembayaran DOKU dan bukti transfer manual dari peserta.
+            Verify DOKU payments and manual transfer proofs from participants.
           </p>
         </div>
         <div className="flex items-center gap-3">

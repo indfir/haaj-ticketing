@@ -18,7 +18,7 @@ async function seedMembers() {
       batch: "2025",
       email: "ade.dewijanti@example.com",
       phone: "081234567890",
-      notes: "Kartu fisik 2 sisi terbitan Badan Pengurus HAAJ 2026",
+      notes: "2-sided physical card issued by HAAJ Board of Directors 2026",
     },
     {
       fullName: "REZKY HAAJ",
@@ -28,7 +28,7 @@ async function seedMembers() {
       batch: "2025",
       email: "rezky@haaj.id",
       phone: "081298765432",
-      notes: "Pengurus HAAJ",
+      notes: "HAAJ Board Member",
     },
     {
       fullName: "SIENIK ANGLITA",
@@ -38,7 +38,7 @@ async function seedMembers() {
       batch: "2025",
       email: "sienik@haaj.id",
       phone: "081345678901",
-      notes: "Designer Kartu Anggota (Rotanev 2023)",
+      notes: "Member Card Designer (Rotanev 2023)",
     },
     {
       fullName: "INDRA FIRDAUS",
@@ -69,9 +69,9 @@ async function seedMembers() {
       update: {},
       create: {
         slug: "pertemuan-rutin-umum-pru-september-2026",
-        title: "Pertemuan Rutin Umum (PRU) — September 2026",
-        subtitle: "Pertemuan Rutin Anggota HAAJ",
-        description: "Pertemuan Rutin Umum Himpunan Astronomi Amatir Jakarta dengan agenda pembahasan langit malam dan pengamatan bersama.",
+        title: "General Routine Meeting (PRU) — September 2026",
+        subtitle: "HAAJ Member Routine Meeting",
+        description: "General Routine Meeting of the Amateur Astronomers Association of Jakarta with agenda on night sky discussion and joint observation.",
         category: "MEETUP",
         status: "PUBLISHED",
         startAt: new Date("2026-09-12T14:00:00+07:00"),

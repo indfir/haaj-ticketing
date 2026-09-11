@@ -11,12 +11,12 @@ function generateMemberQr(): string {
 }
 
 const memberSchema = z.object({
-  fullName: z.string().min(1, "Nama lengkap wajib diisi"),
-  memberNumber: z.string().min(1, "Nomor anggota wajib diisi"),
+  fullName: z.string().min(1, "Full name is required"),
+  memberNumber: z.string().min(1, "Member number is required"),
   qrCode: z.string().optional(),
   cluster: z.string().optional(),
   batch: z.string().optional(),
-  email: z.string().email("Format email tidak valid").optional().or(z.literal("")),
+  email: z.string().email("Invalid email format").optional().or(z.literal("")),
   phone: z.string().optional(),
   isActive: z.boolean().default(true),
   notes: z.string().optional(),
@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { error: { code: "VALIDATION_ERROR", message: "Validasi gagal", details: parsed.error.flatten() } },
+      { error: { code: "VALIDATION_ERROR", message: "Validation failed", details: parsed.error.flatten() } },
       { status: 400 }
     );
   }
@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
   });
   if (existingNumber) {
     return NextResponse.json(
-      { error: { code: "DUPLICATE_NUMBER", message: `Nomor anggota "${data.memberNumber}" sudah terdaftar` } },
+      { error: { code: "DUPLICATE_NUMBER", message: `Member number "${data.memberNumber}" is already registered` } },
       { status: 409 }
     );
   }
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
   });
   if (existingQr) {
     return NextResponse.json(
-      { error: { code: "DUPLICATE_QR", message: `Kode QR "${finalQr}" sudah digunakan oleh anggota lain (${existingQr.fullName})` } },
+      { error: { code: "DUPLICATE_QR", message: `QR code "${finalQr}" is already used by another member (${existingQr.fullName})` } },
       { status: 409 }
     );
   }

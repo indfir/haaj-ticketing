@@ -60,7 +60,7 @@ export async function PUT(
 
   if (!parsed.success) {
     return NextResponse.json(
-      { error: { code: "VALIDATION_ERROR", message: "Validasi gagal", details: parsed.error.flatten() } },
+      { error: { code: "VALIDATION_ERROR", message: "Validation failed", details: parsed.error.flatten() } },
       { status: 400 }
     );
   }
@@ -74,7 +74,7 @@ export async function PUT(
     });
     if (existing) {
       return NextResponse.json(
-        { error: { code: "DUPLICATE_NUMBER", message: `Nomor anggota "${data.memberNumber}" sudah digunakan` } },
+        { error: { code: "DUPLICATE_NUMBER", message: `Member number "${data.memberNumber}" is already in use` } },
         { status: 409 }
       );
     }
@@ -86,7 +86,7 @@ export async function PUT(
     });
     if (existing) {
       return NextResponse.json(
-        { error: { code: "DUPLICATE_QR", message: `Kode QR "${data.qrCode}" sudah digunakan` } },
+        { error: { code: "DUPLICATE_QR", message: `QR code "${data.qrCode}" is already in use` } },
         { status: 409 }
       );
     }

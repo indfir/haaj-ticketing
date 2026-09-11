@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   if (member) {
     if (!member.isActive) {
       return NextResponse.json(
-        { error: { code: "INACTIVE_MEMBER", message: `Anggota ${member.fullName} (${member.memberNumber}) berstatus tidak aktif` } },
+        { error: { code: "INACTIVE_MEMBER", message: `Member ${member.fullName} (${member.memberNumber}) is inactive` } },
         { status: 400 }
       );
     }
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
 
     if (!targetEvent) {
       return NextResponse.json(
-        { error: { code: "EVENT_REQUIRED", message: "Silakan pilih Event / Sesi PRU terlebih dahulu untuk presensi anggota" } },
+        { error: { code: "EVENT_REQUIRED", message: "Please select an Event / PRU Session first for member attendance" } },
         { status: 400 }
       );
     }
@@ -246,21 +246,21 @@ export async function POST(req: NextRequest) {
 
   if (!registration) {
     return NextResponse.json(
-      { error: { code: "NOT_FOUND", message: `Kode QR / Tiket "${rawInput}" tidak ditemukan (bukan tiket maupun kartu anggota terdaftar)` } },
+      { error: { code: "NOT_FOUND", message: `QR Code / Ticket "${rawInput}" not found (not a registered ticket or member card)` } },
       { status: 404 }
     );
   }
 
   if (resolvedEventId && registration.event.id !== resolvedEventId) {
     return NextResponse.json(
-      { error: { code: "WRONG_EVENT", message: `Tiket ini terdaftar untuk event lain: ${registration.event.title}` } },
+      { error: { code: "WRONG_EVENT", message: `This ticket is registered for a different event: ${registration.event.title}` } },
       { status: 400 }
     );
   }
 
   if (registration.status === "CANCELLED" || registration.status === "REJECTED") {
     return NextResponse.json(
-      { error: { code: "INVALID_STATUS", message: `Pendaftaran berstatus ${registration.status.toLowerCase()}` } },
+      { error: { code: "INVALID_STATUS", message: `Registration status is ${registration.status.toLowerCase()}` } },
       { status: 400 }
     );
   }
